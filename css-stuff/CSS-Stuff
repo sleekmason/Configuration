@@ -1,0 +1,173 @@
+##To get gtk inspector
+install libgtk-3-dev
+###THEN
+gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
+then control shift d on object
+or open directly with:
+GTK_DEBUG=interactive your-app
+
+##Hints##
+
+22 color = text at top of geany and logout menu #85D3DB
+48 = line number background. For mousepad #2F4E73 to  #203A47      (26)
+131 Highlite color in geany
+176 is thunar text color. #95E7F0
+177 is scrollbar inner blue #5F8696
+178 is main window color #121C1F
+
+1125 active text in screenshot trigger button  (35)
+
+2146 - menu background color
+
+2590 = scrollbar button unclicked color
+
+2592 clicked color
+
+2689 scrollbar background
+
+2566  is the scrollbar color
+
+4489 For the bright blue color original in screenshot push button
+4492 is the text box color - currently #195D6E  This one is every highlighted selection.
+
+4303 = Border around all the boxes in thunar. currently #699DBA
+4224 = Or could also be this currently #5F8696
+
+#18252B main blue
+#1E242A main secondary (main window) to #1A1F24#161A1F#05171C#121C1F
+
+
+4495  - activates upper bar to same as window.?
+
+3613  -  Sidebar
+
+4359 menu background in thunar
+
+4519 is the highlighted text in menus
+
+4489 is the selected color in menus (thunar)
+
+4505 is unhighlighted text at top of Geany
+
+4521 box border color
+
+4659-4670 = thunar toolbar stuff
+
+4661 thunars sidebar top border
+
+
+3789 sidebar background color in thunar (whole thing)
+3798 is highlighted bar
+
+49 and 104 are selections that cant be chosen text. See screenshot.  #8595A2
+
+4477 is all writing in buttons (exit) (40)
+
+4480 is the text for the rest - should be slightly lighter than 4477  #84DAE3 (13)
+
+
+
+4527 is warning colors
+
+
+
+UNKNOWNS todo:
+
+49 and 104 are selections that cant be chosen text. See screenshot.  #8595A2
+check out 87 desktop icon view.  currently stark blue
+check out  137 as well
+check out 40, . .  was suppossed to match 22
+Changed 496 and 512 Checked button colors
+4194 is sickly green #4e9a06   #3D7805  same
+4114 is a stark blue background color
+528 change lightgrey to #1B2A30
+2916 changed from #1B4357 to #1A4154  (28)
+3838 changed to#28343A from e4e4e4 white background
+1019 was sickly white #fcd4d4 changed to #CDE8FA
+1037 was sickly yellow white #f7cfcf changed to: #AEDDDF
+1065 is the peach color #F57979 button.destructive-action.flat
+1080 button.destructive-action:disabled #f14949 peachy red
+1087  #F8A4A4 light peach
+1099 #F9ADAD light peach
+
+
+
+###These start around 4500###
+/* GTK NAMED COLORS
+   ----------------
+   use responsibly! */
+/*
+widget text/foreground color */
+@define-color theme_fg_color #85D3DB;
+/*
+text color for entries, views and content in general */
+@define-color theme_text_color #95E7F0;
+/*
+widget base background color */
+@define-color theme_bg_color #18252B;
+/*
+text widgets and the like base background color */
+@define-color theme_base_color #121C1F;
+/*
+base background color of selections */
+@define-color theme_selected_bg_color #195D6E;
+/*
+text/foreground color of selections */
+@define-color theme_selected_fg_color #BAE6FF;
+/*
+base background color of insensitive widgets */
+@define-color insensitive_bg_color #1A4154;
+/*
+text foreground color of insensitive widgets */
+@define-color insensitive_fg_color #8595A2;
+/*
+insensitive text widgets and the like base background color */
+@define-color insensitive_base_color #121C1F;
+/*
+widget text/foreground color on backdrop windows */
+@define-color theme_unfocused_fg_color #8595A2;
+/*
+text color for entries, views and content in general on backdrop windows */
+@define-color theme_unfocused_text_color #95E7F0;
+/*
+widget base background color on backdrop windows */
+@define-color theme_unfocused_bg_color #18252B;
+/*
+text widgets and the like base background color on backdrop windows */
+@define-color theme_unfocused_base_color #57A4D0;
+/*
+base background color of selections on backdrop windows */
+@define-color theme_unfocused_selected_bg_color #195D6E;
+/*
+text/foreground color of selections on backdrop windows */
+@define-color theme_unfocused_selected_fg_color #BAE6FF;
+/*
+widgets main borders color */
+@define-color borders #5F8696;
+/*
+widgets main borders color on backdrop windows */
+@define-color unfocused_borders #699DBA;
+/*
+these are pretty self explicative */
+@define-color warning_color #f57900;
+@define-color error_color #4D0109;
+@define-color success_color #4e9a06;
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

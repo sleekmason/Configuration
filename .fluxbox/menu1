@@ -1,0 +1,77 @@
+## Please see <file:/usr/share/doc/menu/README> for information.
+## to use your own menu, copy this to ~/.fluxbox/menu, 
+##or whatever you wish to name it,then edit
+## ~/.fluxbox/init and change the session.menuFile path,
+## to ~/.fluxbox/menu
+[begin] (Fluxbox)
+##  ~/.fluxbox/menu1 
+#
+
+[exec] (Terminal) {urxvt}
+[separator]
+#[exec] (Pcmanfm) {pcmanfm}
+[exec] (Thunar) {thunar}
+[exec] (Web Browser) {firefox-esr}
+[exec] (Thunderbird) {thunderbird}
+[separator]
+[submenu](Quick Grab)
+[exec] (Geany) {geany}
+[exec] (Pcmanfm) {pcmanfm}
+[exec] (Mousepad) {mousepad}
+[exec] (Lxterminal) {lxterminal}
+[exec] (Writer) {libreoffice}
+[exec] (Newsboat) {urxvt -g 120x40+120+100 -e newsboat}
+[exec] (Gpicview) {gpicview}
+[exec] (SmPlayer) {smplayer}
+[exec] (Pragha) {pragha}
+[exec] (Gimp) {gimp}
+[exec] (gparted) {gksudo gparted}
+[exec] (Synaptic) {gksudo synaptic}
+[exec] (Root PcManfm) {gksudo pcmanfm}
+[exec] (Kernel Remover) {kernel-remover}
+[exec] (Printer Setup) {system-config-printer}
+[exec] (Catfish File) {catfish}
+[end]
+[submenu] (Applications)
+[exec] (Regenerate Menu) {update-menus}
+[include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]
+[separator]
+#[exec] (Wallpaper X) {fbsetbg -f -r ~/Pictures/wallpapers} 
+[submenu](Configuration)
+[exec] (Lxappearance) {lxappearance}
+[exec] (Power Manager) {xfce4-power-manager-settings}
+   [submenu](Fluxbox Config)
+[config] (FluxConfig)
+   [submenu] (Styles) {}
+      [stylesdir] (/usr/share/fluxbox/styles)
+      [stylesdir] (~/.fluxbox/styles)
+   [end]
+   [exec] (Fluxbox Menu) {geany ~/.fluxbox/menu1}
+[exec] (Fluxbox Startup) {geany ~/.fluxbox/startup}
+[exec] (Fluxbox Init) {geany ~/.fluxbox/init}
+   [end]
+   [exec] (Xbindkeys Config) {geany ~/.xbindkeysrc}
+   [exec] (Urxvt Config) {geany ~/.Xresources}
+   [exec] (Conky Config) {geany ~/.config/conky/conky.conf}
+   [exec] (Compton Config) {geany ~/.config/compton.conf}
+   [exec] (Dmenu F3 Config) {geany ~/.config/dmenu/dmenu-apps}
+   [exec] (Wbar Config) {geany ~/.wbar}
+   [end]
+[submenu](Toggles)
+[exec] (Screenshot) {gnome-screenshot -i}
+[exec] (Toggle Compton) {toggle.compton}
+[exec] (Toggle Conky) {toggle.conky2}
+[exec] (Toggle clipit) {toggle.clipit}
+[exec] (Toggle Wbar) {toggle.wbar}
+[exec] (Toggle Ld-Hotcorners) {toggle.ld}
+[exec] (Toggle Monster Panel) {toggle.monster}
+[exec] (Xkill) {xkill}
+[exec] (Switch To Openbox) {open-entry}
+[end]
+[separator]
+[reconfig] (Reconfigure)
+   [restart] (Restart)
+   [exec] (Exit) {ld-logout}
+[end]
+
