@@ -31,6 +31,11 @@
 					<execute>geany</execute>
 				</action>
 			</item>
+			<item label="Spacefm">
+				<action name="Execute">
+					<execute>spacefm</execute>
+				</action>
+			</item>
 			<item label="Pcmanfm">
 				<action name="Execute">
 					<execute>pcmanfm</execute>
@@ -71,14 +76,14 @@
 					<execute>gpicview</execute>
 				</action>
 			</item>
-			<item label="Gimp">
-				<action name="Execute">
-					<execute>gimp</execute>
-				</action>
-			</item>
 			<item label="Pragha">
 				<action name="Execute">
 					<execute>pragha</execute>
+				</action>
+			</item>
+			<item label="Gimp">
+				<action name="Execute">
+					<execute>gimp</execute>
 				</action>
 			</item>
 			<item label="Gparted">
