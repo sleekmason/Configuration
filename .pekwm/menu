@@ -60,7 +60,7 @@ RootMenu = "Pekwm" {
 		Entry = "Exit" { Actions = "Exit" }
 	}
 			Entry = "Power Manager" { Actions = "Exec xfce4-power-manager-settings" }
-			Entry = "Toggle Lxappearance" { Actions = "Exec lxappearance" }
+			Entry = "Lxappearance" { Actions = "Exec lxappearance" }
 			Entry = "Urxvt Config" { Actions = "Exec geany ~/.Xresources" }
 			Entry = "Conky Config" { Actions = "Exec geany ~/.config/conky/conky.conf" }
 			Entry = "Compton Config" { Actions = "Exec geany ~/.config/compton.conf" }
