@@ -24,3 +24,4 @@ lxpolkit &
 nm-applet &
 plank &
 xfce4-power-manager &
+ld-hotcorners --daemon &
