@@ -1,0 +1,12 @@
+#!/bin/bash
+if pgrep -xf fbpanel > /dev/null; then
+    pkill -f pager &
+    pkill -f tint2-pager &
+    pkill -f fbpanel &
+    pkill -f tint2
+else
+    pkill -f tint2 &
+    pkill -f pager &
+    fbpanel &
+    volumeicon &
+fi
