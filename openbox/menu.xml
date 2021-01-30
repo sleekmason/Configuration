@@ -26,6 +26,11 @@
 		</item>
 		<separator/>
 		<menu id="root-menu-594711" label="Quick Grab">
+			<item label="Writer">
+				<action name="Execute">
+					<execute>libreoffice</execute>
+				</action>
+			</item>
 			<item label="Geany">
 				<action name="Execute">
 					<execute>geany</execute>
@@ -98,7 +103,7 @@
 			</item>
 			<item label="Printer Setup">
 				<action name="Execute">
-					<execute>system-config-printer</execute>
+					<execute>gksudo system-config-printer</execute>
 				</action>
 			</item>
 			<item label="Kernel Remover">
@@ -234,11 +239,6 @@
 					<execute>xkill</execute>
 				</action>
 			</item>
-			<item label="Switch To Fluxbox">
-				<action name="Execute">
-					<execute>flux-entry</execute>
-				</action>
-			</item>
 			<item label="Switch To Jwm">
 				<action name="Execute">
 					<execute>jwm-entry</execute>
@@ -247,6 +247,11 @@
 			<item label="Switch To Pekwm">
 				<action name="Execute">
 					<execute>pek-entry</execute>
+				</action>
+			</item>
+			<item label="Switch To Fluxbox">
+				<action name="Execute">
+					<execute>flux-entry</execute>
 				</action>
 			</item>
 		</menu>
