@@ -8,4 +8,4 @@ monster-panel
 #fbpanel-alsa
 #pnmixer
 conky
-ld-hotcorners --daemon
+#ld-hotcorners --daemon
