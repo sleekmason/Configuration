@@ -237,6 +237,11 @@
 					<execute>toggle.parcellite</execute>
 				</action>
 			</item>
+			<item icon="/usr/share/icons/gnome/48x48/actions/object-flip-horizontal.png" label="Screensaver Toggle">
+				<action name="Execute">
+					<execute>xscreensaver</execute>
+				</action>
+			</item>
 			<item icon="/usr/share/icons/gnome/48x48/actions/object-flip-horizontal.png" label="Ld-Hotcorners Toggle">
 				<action name="Execute">
 					<execute>toggle.ld</execute>
