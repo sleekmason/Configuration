@@ -25,6 +25,19 @@ RootMenu = "Pekwm" {
 	Separator {}
 
 	Submenu = "Quick Grab" {
+	Submenu = "Root Files" {
+
+			Entry = "/etc" { Actions = "Exec gksudo thunar /etc" }
+			Entry = "/ect/apt/sources.list" { Actions = "Exec gksudo geany /etc/apt/sources.list" }
+			Entry = "/usr/share" { Actions = "Exec gksudo thunar /usr/share" }
+			Entry = "/usr/share/fonts" { Actions = "Exec gksudo thunar /usr/share/fonts" }
+			Entry = "/usr/share/icons" { Actions = "Exec gksudo thunar /usr/share/icons" }
+			Entry = "/usr/share/themes" { Actions = "Exec gksudo thunar /usr/share/themes" }
+			Entry = "/usr/bin" { Actions = "Exec gksudo thunar /usr/bin" }
+			Entry = "/usr/local/bin" { Actions = "Exec gksudo thunar /usr/local/bin" }
+
+}
+			Entry = "Mousepad" { Actions = "Exec mousepad" }
 			Entry = "Run.." { Actions = "ShowCmdDialog" }
 			Entry = "Writer" { Actions = "Exec libreoffice" }
 			Entry = "Geany" { Actions = "Exec geany" }
@@ -84,9 +97,10 @@ RootMenu = "Pekwm" {
 	}
 		Submenu = "Toggles" {
 			Entry = "Screenshot" { Actions = "Exec gnome-screenshot -i" }
-			Entry = "Toggle Clipit" { Actions = "Exec toggle.clipit" }
 			Entry = "Toggle Conky" { Actions = "Exec toggle.conky" }
 			Entry = "Toggle Compton" { Actions = "Exec toggle.compton" }
+			Entry = "Toggle Clipboard" { Actions = "Exec toggle.clipit" }
+			Entry = "Toggle Screensaver" { Actions = "Exec toggle.xscreensaver" }
 			Entry = "Toggle Ld-hotcorners" { Actions = "Exec toggle.ld" }
 			Entry = "Toggle Monster Panel" { Actions = "Exec toggle.monster" }
 		    Entry = "Toggle Plank Panel" { Actions = "Exec toggle.plank" }

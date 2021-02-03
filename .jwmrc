@@ -5,7 +5,6 @@
 <!-- Startup -->	
 <StartupCommand>feh --bg-scale /home/wallpaper/Peace.png</StartupCommand>	
 <StartupCommand>killall lxpolkit ; lxpolkit</StartupCommand>
-<!-- <StartupCommand>killall parcellite ; parcellite</StartupCommand> -->
 <StartupCommand>killall nm-applet ; nm-applet</StartupCommand>
 <StartupCommand>killall volumeicon ; volumeicon</StartupCommand>
 <StartupCommand>xfce4-power-manager</StartupCommand>
@@ -24,7 +23,20 @@
             <Program icon="/usr/share/icons/ld-icons/firefox.png" label="Web Browser">firefox-esr</Program>
             <Program icon="thunderbird.png" label="Thunderbird">thunderbird</Program>
         <Menu icon="applications-office.png" label="Quick Grab">
-	        <Program icon="edit-select-all.png" label="Writer">libreoffice</Program>
+	<Menu icon="/usr/share/icons/gnome-brave/32x32/places/folder-documents.png" label="Root Files">
+            <Program icon="/usr/share/icons/gnome-human/32x32/places/folder-documents.png" label="/etc">gksudo thunar /etc</Program>
+	    <Program icon="/usr/share/icons/gnome-human/32x32/places/folder-documents.png" label="/etc/apt/sources.list">gksudo geany /etc/apt/sources.list</Program>
+	    <Program icon="/usr/share/icons/gnome-brave/32x32/places/folder-documents.png" label="/usr/share">gksudo thunar /usr/share</Program>
+	    <Program icon="/usr/share/icons/gnome-brave/32x32/places/folder-documents.png" label="/usr/share/fonts">gksudo thunar /usr/share/fonts</Program>
+	    <Program icon="/usr/share/icons/gnome-brave/32x32/places/folder-documents.png" label="/usr/share/icons">gksudo thunar /usr/share/icons</Program>
+            <Program icon="/usr/share/icons/gnome-brave/32x32/places/folder-documents.png" label="/usr/share/themes">gksudo thunar /usr/share/themes</Program>
+            <Program icon="/usr/share/icons/gnome-wise/32x32/places/folder-documents.png" label="/usr/bin">gksudo thunar /usr/bin</Program>
+            <Program icon="/usr/share/icons/gnome-wise/32x32/places/folder-documents.png" label="/usr/local/bin">gksudo thunar /usr/local/bin</Program>
+ </Menu>
+
+
+
+	     <Program icon="edit-select-all.png" label="Writer">libreoffice</Program>
             <Program icon="geany.png" label="Geany">geany</Program>
             <Program icon="system-file-manager.png" label="Spacefm">spacefm</Program>
             <Program icon="system-file-manager.png" label="Pcmanfm">pcmanfm</Program>
@@ -65,7 +77,7 @@
 	     <Menu icon="object-flip-horizontal.png" label="Toggles">
 	    <Program icon="object-flip-horizontal.png" label="Toggle Conky">toggle.conky</Program>
 	    <Program icon="object-flip-horizontal.png" label="Toggle Compton">toggle.compton2</Program>
-	    <Program icon="object-flip-horizontal.png" label="Toggle Clipboard">toggle.parcellite</Program>
+	    <Program icon="object-flip-horizontal.png" label="Toggle Clipboard">toggle.clipit</Program>
 	    <Program icon="object-flip-horizontal.png" label="Toggle Screensaver">toggle.xscreensaver</Program>
             <Program icon="object-flip-horizontal.png" label="Toggle Ld-hotcorners">toggle.ld</Program>
             <Program icon="window-close.png" label="Xkill">xkill</Program>
