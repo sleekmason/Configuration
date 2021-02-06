@@ -39,3 +39,4 @@ Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
 NotShowIn=LXDE;
+Hidden=true
