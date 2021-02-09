@@ -9,7 +9,7 @@
 # This only leaves a billion options not yet changed, so not everything may be groovy yet.
 # Find it, Fix it, Share it.
 
-######## This is a very cool inspector that means fuckall to me, but looks pretty neat nonetheless.
+######## This is a very cool inspector.
 ## To get gtk inspector
 # Install: 
 libgtk-3-dev
