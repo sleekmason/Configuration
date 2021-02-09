@@ -1,0 +1,179 @@
+####### This is based off of the current Greybird theme, and could change in the future.
+###### Yes Yes, the suggested way of theming is blah blah blah . .  Go do that.  If you want 
+##### to have fun and absolute control, do this:)
+#### These are my notes, and as such, could be off here and there.  Ya never know.
+### This is a reference for my notes but you can certainly make a nice theme following these items in order.
+## A lot of items here are specific.  Need to change a single highlight color? Scroll bar Color?
+# Some items may be redundant (listed as separate item later in the file) 
+# Most items have a number after the item indicating how many there are to change. (61)
+# References to JWM are important, as JWM handles things slightly different, 
+# and you will have issues without adjusting these items as such.
+# This only leaves a billion options not yet changed, so not everything may be groovy yet.
+# Find it, Fix it, Share it.
+
+######## This is a very cool inspector that means fuckall to me, but looks pretty neat nonetheless.
+## To get gtk inspector
+# Install: 
+libgtk-3-dev
+###THEN
+gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
+Then: 
+- control shift+d on object
+or open directly with:
+GTK_DEBUG=interactive <application>
+
+
+### HERE ARE THE HINTS.
+### USE GEANY'S REPLACE FUNCTION TO CHANGE ALL COLORS IN A GROUP TO WHATEVER YOU WISH.
+
+
+### text widgets and the like base background color */   MAIN THUNAR WINDOW AND MOUSEPAD BACKGROUND
+4486 Main thunar -thunderbird background window From #fcfcfc - (61)
+
+### widget base background color */ widget base background color on backdrop windows */ ALL BUTTONS (EXIT)
+4482 and 4510 -  and thunar headerbar background from #cecece - (151)
+
+### Sidebar Background Color */  THUNAR SIDEBAR (Should match 4486)
+3789 Changes whole sidebar background in thunar. #dae0e6 - (6?)
+
+### Base stated background color */  TOP BAR to Thunar, Mousepad. (this needs inspection), may be just gradient hit.
+23 & 26 (specific). #cecece - (2)
+
+### Sidebar Background image */ (Should match 4489)  THUNARS SIDEBAR HIGHLIGHTED BAR BACKGROUND
+3798 X 4 only (specific) from #dae0e6 - Should match 4489 (offbyone)
+
+### base background color of selections */ Highlighted ICON and MENU BAR in thunar (should match 3798)
+4489 from #398ee7 - (99)
+
+### text color for entries, views and content in general */ MOUSEPAD TEXT
+4480 from #212121 - (13)
+
+### Sidebar Background image text */   Thunar SIDEBAR BAR HIGHLIGHTED TEXT Color (then bunch others.
+3822 is specific to thunar sidbar bar.   (1+46)
+
+### widget text/foreground color */ MAIN THUNAR TOP BAR TEXT & TOP BAR ICON
+4477 (#3c3c3c)  (47)
+
+### text/foreground color of selections */ THUNAR HIGHLIGHTED MENU BAR TEXT COLOR
+4492 & 4519 from  #ffffff 
+
+### textview border background color */ MOUSEPAD LINE NUMBER BACKGROUND
+78 Mousepad line # background from #e5e5e5  (4)
+
+### text color for entries, views and content in general on backdrop windows */ THUNAR MAIN WINDOW TEXT IN WINDOW
+4507  #212121   thunar unselected window text. (9)
+
+### text foreground color of insensitive widgets */ INFO TEXT IN MENUS (Light but not inactive) should resemble the three below.
+4498 and 50 #858585 (45)
+
+### Thunar view as compact list headers  (name, size)(UNSELECTED ITEMS IN GEANY, UNSELECTABLE ITEMS IN MENUS,
+271, 2061, 2146, (specific) from #9c9c9c 
+
+ SCROLL BAR
+### background-image: linear-gradient */
+2590 = scrollbar button unclicked color from: #dbdbdb (9)
+2592 clicked color  from:   #c1c1c1 (1)
+
+### SCROLLBAR BACKGROUND (two Colors gradient)
+2566 #e8e8e8, #A3A29D
+
+### Scrollbar Background Unselected   unselected background color (while dissapearing)
+2689  white #C7C6C2
+
+### UNSELECTED MOUSEPAD  AND THUNAR MAIN WINDOW BACKGROUND JWM
+4513  #110707 
+
+###  UNSELECTED THUNAR SIDE WINDOW 
+3837 from e4e4e4 - (1)
+
+JWM MOUSEPAD TEXT or just  MOUSEPAD TEXT COLOR
+4188 Unselected Window (jwm) in Mousepad text color #4c4c4c (5)
+4385 (specific) selected color after leaving the window (jwm) (1) #8FBCBE
+
+
+
+### OTHERS
+### Links*/  Blue VISITED text Text in THUNDERBIRD
+1387 & 1402  #2d71b8   (2) ##This is the blue text in thunderbird (visited button)
+
+###LIGHTDM Text
+4773 Light dm top bar text color From #363636 to #121211
+
+##### This one is important to match properly THESE WHITES AFFECT SEVERAL DIFFERENT THINGS
+### TEXT IN SCREENSHOT TRIGGER BUTTON (WHITE) Careful here not to do the gradients, 
+## print options, scrollbar options, or any of the "hovers" on first pass.
+1125 WHITE 
+
+So, During first run replace #'s:
+### (Replace with #some number)
+279
+288
+297
+702
+782
+793
+820
+944
+974
+993
+1001
+Leaving ALL the HOVER colors white as well.
+SKIP SCROLLBAR WHITES 2596,2616,2624
+THEN:
+1125
+1588
+2949
+3225
+
+###TOOLTIPs
+4128 change from 5 to 1
+4130 text shadow black
+4132 is background rgba(0, 0, 0, 0.8) (black)
+4140 white to: #101010
+
+### Geany  HOVERED TEXT IN FILE BOX
+2475 (specific) changed from 616161 
+22 (specific) = text at top of geany and logout menu to #121211
+131 specific) #b1b1b1 Highlite color in geany
+
+4519 is the highlighted text in menus
+
+
+### THUNAR BOX BORDER COLOR
+4522 #828282
+
+### THUNAR LINES AROUND WINDOWS
+4669 Thunars frame lines color #828282  (55?)
+
+
+4528, 29, and 30  are the warning colors (red)
+
+###PRAGHA
+1701 Praga top bar active color  from #18252B to #345563 Gradient change
+1706 is the top bar background color
+1737 button outline color in pragha
+
+
+################################
+CHEAP FIX FOR PCMANFM
+gtk-color-scheme	= "base_color:#EBF0F5\nbg_color:#C0CCE0"
+#####################################################################
+
+
+############# Feeling Lucky? No, really...##########################
+
+1589 border color - was black rgba(0, 0, 0, 0.7)   (50) HUGE
+HIGHLIGHT COLORS FOR BOXES
+220 Background image white  rgba(255, 255, 255, 0.2)      (7)
+1595 outline colors from white  rgba(238, 238, 238, 0.3)     (25) 
+
+
+########################################################################
+
+
+
+
+
+
+
+
