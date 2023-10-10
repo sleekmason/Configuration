@@ -1,0 +1,11 @@
+#!/bin/bash
+
+GTK_THEME="alt-dialog" \
+yad --title "Logout Options" --center --width=500 --height=52 --borders=4 \
+--window-icon=/usr/share/icons/ld-icons/exit4.png \
+    --button=" Lock Screen!/usr/share/icons/ld-icons/pixmaps/password.png!":"slock" \
+    --button=" Logout!/usr/share/icons/ld-icons/pixmaps/logout_exit.png!":"pkill -KILL -u "$USER"" \
+    --button=" Suspend!/usr/share/icons/ld-icons/pixmaps/logout_suspend.png!":"systemctl --no-ask-password --ignore-inhibitors suspend" \
+    --button=" Reboot!/usr/share/icons/ld-icons/pixmaps/logout_reboot.png!":"systemctl --no-ask-password --ignore-inhibitors reboot" \
+    --button=" Shutdown!/usr/share/icons/ld-icons/pixmaps/logout_shutdown.png!":"systemctl --no-ask-password --ignore-inhibitors poweroff" \
+    

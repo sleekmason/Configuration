@@ -1,0 +1,36 @@
+#!/bin/bash
+
+mkdir -p ~/.local/share/icons/breeze/24x24/status
+cd ~/.local/share/icons/breeze/24x24/status
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-100.svg battery-level-100-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-090.svg battery-level-90-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-080.svg battery-level-80-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-070.svg battery-level-70-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-060.svg battery-level-60-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-050.svg battery-level-50-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-040.svg battery-level-40-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-030.svg battery-level-30-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-020.svg battery-level-20-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-010.svg battery-level-10-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-full-charging.svg battery-level-100-charged-symbolic.png 
+ln -s /usr/share/icons/breeze-dark/status/24/battery-100-charging.svg battery-level-100-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-090-charging.svg battery-level-90-charging-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-080-charging.svg battery-level-80-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-070-charging.svg battery-level-70-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-060-charging.svg battery-level-60-charging-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-050-charging.svg battery-level-50-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-040-charging.svg battery-level-40-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-030-charging.svg battery-level-30-charging-symbolic.png
+
+ln -s /usr/share/icons/breeze-dark/status/24/battery-020-charging.svg battery-level-20-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-010-charging.svg battery-level-10-charging-symbolic.png
+ln -s /usr/share/icons/breeze-dark/status/24/battery-000-charging.svg battery-level-0-charging-symbolic.png
+
+sudo gtk-update-icon-cache /usr/share/icons/breeze-dark

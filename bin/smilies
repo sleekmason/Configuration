@@ -1,0 +1,52 @@
+#!/bin/bash
+## The Smileotron:
+## choose an image file from a folder, upload if necessary
+## and get its url + bbcode to paste.
+## Dependencies: feh curl xsel jq
+
+# anonymous ID for imgur service
+ImgurID=ea6c0ef2987808e
+
+# set your folder for smileys (and put some there)
+SMILEY_DIR="$HOME/Pictures/smilies"
+
+###################################################
+
+missing=()
+for i in feh curl xsel jq
+do
+    hash "$i" 2>/dev/null || missing+=(" $i")
+done
+[[ ${missing[0]} ]] && {
+    echo "$0: This script requires the following commands: ${missing[*]}
+Please install those packages and rerun the script." >&2
+    exit 1
+}
+
+[[ -d $SMILEY_DIR ]] || {
+    echo "$0: $SMILEY_DIR no such directory" >&2
+    exit 1
+}
+
+[[ $1 = --load ]] || {
+    exec feh -t "$SMILEY_DIR" --quiet --title 'Click a smiley' --index-info '' --image-bg black --action "$0 --load %F;"
+    exit # only used if feh call fails
+}
+
+####################################################
+
+# if "--load" option passed, upload image (if necessary) and print out url
+
+file="$2"
+ext=${file##*.}
+
+feh -U "$file" >/dev/null 2>&1 || { echo "$0: $2 no such image file in $SMILEY_DIR" >&2; exit 1;}
+[[ -f ${file}.url ]] || {
+    img_id=$( curl -sH "Authorization: Client-ID ${ImgurID}" -F image=@"$file" https://api.imgur.com/3/image | jq --raw-output '.data.id' )
+    echo "https://i.imgur.com/${img_id}.${ext}" > "${file}.url"
+}
+
+# uncomment end of next line to use clipboard instead of selection
+printf '[img]%s[/img]' "$(<"${file}.url")" | xsel --input #--clipboard
+#pkill -f "feh -t $SMILEY_DIR" # unnecessary?
+exit

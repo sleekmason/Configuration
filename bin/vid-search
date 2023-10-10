@@ -1,0 +1,13 @@
+#!/bin/bash
+#locate video files (most common extensions)
+mlocate "*.avi" "*.mpg" "*.mpeg" "*.mkv" "*.mp4" "*.mov" "*.3gp" "*.wmv" > /tmp/video-file-list.txt
+##Get selection
+selection=$(yad --center --height=400 --width=600 --title=$"Videos" --list --column=$"" --button="Play" < /tmp/video-file-list.txt)	
+selection_to_add=$(echo $selection|cut -d\| -f1)	
+
+# if nothing was selected, exit
+if [ -z "$selection" ]; then exit
+fi
+
+# play selection
+mpv "$selection_to_add"

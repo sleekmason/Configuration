@@ -1,0 +1,11 @@
+#! /bin/bash
+function confirm_exit
+{
+yad --text "Are you sure?"
+[[ $? -eq 0 ]] && kill -USR1 $YAD_PID
+} 
+export -f confirm_exit 
+
+
+#and then use:
+ --button "gtk-close:bash -c confirm_exit" 

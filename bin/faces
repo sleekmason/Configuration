@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+make_face_table () {
+  local -a base=(0x1F600 0x1F610 0x1F620 0x1F630 0x1F640)
+  local offset
+  for b in "${base[@]}"; do
+    for offset in {0..15}; do
+      printf "%x\n" "$(( b + offset ))"
+    done
+  done
+  return 0
+}
+
+FACETABLE=($(make_face_table))
+
+{
+for SMILEY in ${FACETABLE[*]};
+ do
+ eval printf %s "\$'\\U${SMILEY}'"
+ printf %b "\ufe0f"
+done
+
+printf %s "\n\n"
+
+for SMILEY in ${FACETABLE[*]};
+ do
+ eval printf %s "\$'\\U${SMILEY}'"
+ printf %b "\ufe0e"
+done
+
+printf %s "\n\n"
+
+printf %s "Now press ctrl+:"
+} | yad --width=500 --height=500 --form --field=":TXT"
+
+exit 0

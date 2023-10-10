@@ -1,0 +1,8 @@
+## Remove sound from video to create coverted video
+ffmpeg -i VID_20220224_174748.mp4 -c:v copy -an I-Could-Be.mp4
+
+## Extract audio from video with groovy sound
+ffmpeg -i goodsound.mp4 goodsound.mp3
+
+## Add the audio back into to the converted video
+ffmpeg -i I-Could-Be.mp4 -i goodsound.mp3 -c copy -map 0:v:0 -map 1:a:0 ICouldBe.mp4

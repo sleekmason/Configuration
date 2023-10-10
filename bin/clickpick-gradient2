@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# wallcolGradient
+
+# pick two colors and set that gradient as wallpaper
+
+yad --title "Clickypick Gradient" --window-icon=/usr/share/icons/ld-icons/paw-color.png \
+--width=300 --height=300 --center --button="OK"!/usr/share/icons/ld-icons/paw-color.png \
+--text-info --justify=center --wrap < /usr/share/lilidog/clickypick-gradient.txt --fontname=" Dejavu Sans 11"
+
+one="$(gpick -p -s -o)"
+two="$(gpick -p -s -o)"
+
+res="$(xdpyinfo | awk '/dimensions/{print $2}')"
+
+doit () {
+    
+    # info
+    echo "$one > $two @ $res"
+    
+    # make gradient
+    convert -size "${res}" gradient:"${one}-${two}" -channel RGB -separate -dither FloydSteinberg -colors 256 -combine -depth 8 ~/.gradient.png || exit
+    
+    # if there is ~/.noise.png, lets overlay that automagically
+    if [[ -f ~/.noise.png ]]; then
+        composite -alpha off -compose overlay ~/.noise.png ~/.gradient.png /tmp/tmpout.png
+        mv /tmp/tmpout.png ~/.gradient.png
+    fi 
+    
+    # set wallpaper
+    feh --bg-scale ~/.gradient.png
+
+}
+
+[[ "$one" && "$two" && "$res" ]] && doit
+pkill -x feh
+

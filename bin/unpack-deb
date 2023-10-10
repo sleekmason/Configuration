@@ -1,0 +1,113 @@
+#!/bin/bash
+
+HELP="Script to extract .deb file, and rebuild after editing.
+Usage: $0 filename.deb"
+
+# to open directory
+FILEMGR=thunar
+
+# Where to put the new .deb file?
+# Leave blank to use dir of original .deb (which will be renamed *~bak~),
+# or enter path of target dir (which will be created if necessary).
+# Can be relative to original dir, or absolute.
+DEST=
+
+# launch in terminal if one is not connected
+TERM=urxvt
+[ -t 1 ] && [ -t 0 ] || {
+    exec $TERM -e "$0" "$@"
+    exit 1
+}
+
+error_exit() {
+    echo "$0 error: $1" >&2
+    exit 1
+}
+
+required_commands='dpkg-deb md5sum'
+
+missing_commands=
+for i in $required_commands
+do
+    hash $i || missing_commands+=" $i"
+done
+[[ $missing_commands ]] && error_exit "This script requires the following commands: $missing_commands
+Please install the packages containing the missing commands
+and rerun the script."
+
+case $1 in
+*.deb)
+    :
+    ;;
+*)
+    echo "$1 is not a .deb file.
+$HELP"
+    exit
+    ;;
+esac
+DEBFILE="$1"
+
+echo "EDITING $DEBFILE
+"
+
+DEBDIR="$( dirname "$1" )"
+[[ -r $DEBFILE && -w $DEBFILE ]] || error_exit "cannot read/write $DEBFILE"
+
+TMPDIR=$(mktemp -d /tmp/deb.XXXXXXXXXX) || error_exit "cannot make temporary directory"
+[[ -d $TMPDIR && $TMPDIR = /tmp/* ]] || error_exit "$TMPDIR has not been setup correctly"
+trap 'rm -r "$TMPDIR"' EXIT
+
+mkdir -p "$TMPDIR/extract/DEBIAN" || error_exit "cannot make directory extract/DEBIAN in $TMPDIR"
+dpkg-deb -x "$DEBFILE" "$TMPDIR/extract"
+dpkg-deb -e "$DEBFILE" "$TMPDIR/extract/DEBIAN"
+
+
+echo "Please make your changes to the deb file contents.
+Press enter when ready to continue.
+Press any other key to abandon editing."
+(sleep 1; $FILEMGR "$TMPDIR/extract") &
+read -rsn1
+[[ $REPLY ]] && { echo "goodbye..."; exit 0;}
+
+if [[ $DEST ]]
+then
+    if [[ $DEST = /* ]]
+    then
+        TARGET="$DEST" # absolute path
+    else
+        TARGET="$DEBDIR/$DEST" # relative to DEBDIR
+    fi
+    mkdir -p "$TARGET" || error_exit "unable to create target directory $TARGET"
+else
+    mv "$DEBFILE" "${DEBFILE}~bak~" || error_exit "cannot rename $DEBFILE"
+    TARGET="$DEBDIR"
+fi
+
+(
+cd "$TMPDIR/extract"
+find . -type f ! -regex '.*.hg.*' ! -regex '.*?debian-binary.*' ! -regex '.*?DEBIAN.*' -printf '%P ' | xargs md5sum > "$TMPDIR/extract/DEBIAN/md5sums"
+)
+sudo chown -R root:root "$TMPDIR/extract" || error_exit "cannot change permissions on 'extract' in $TMPDIR"
+dpkg-deb -b "$TMPDIR/extract" "$TARGET" || {
+    echo "FAILED to build new .deb file!"
+    mv "${DEBFILE}~bak~" "$DEBFILE" || echo "cannot restore name of $DEBFILE"
+    echo "Keep copy of extracted files?
+(Press enter to keep a copy in $DEBDIR/extract,
+any other key to delete them.)"
+    read -srn1
+    [[ ! $REPLY ]] && cp -r "$TMPDIR/extract" "$DEBDIR/extract"
+}
+sudo chown -R $USER:$USER "$TMPDIR" || error_exit "cannot restore user permissions on $TMPDIR"
+
+# comment out next lines (94~97) if you don't want them
+# assumes DEBDIR is a local repo
+# and generates Packages.gz
+(
+cd "$DEBDIR"
+dpkg-scanpackages -m . | gzip -c > Packages.gz
+)
+
+echo "press any key to exit"
+read -rsn1
+
+exit
