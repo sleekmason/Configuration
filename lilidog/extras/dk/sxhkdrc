@@ -6,7 +6,7 @@ mod4 + l
     geany ~/.config/dk/keys-cheatsheet.txt
 
 # jgmenu
-mod4 + F1
+alt + F1
     jgmenu_run
 
 # Dmenu
@@ -79,10 +79,10 @@ mod4 + u
 
 # terminal
 mod4 + Return
-	xfce4-terminal
+	x-terminal-emulator
 
 mod4 + t
-    xfce4-terminal
+    x-terminal-emulator
     
 # File manager	
 mod4 + f
@@ -111,10 +111,18 @@ ctrl alt + x
 # Logout
 alt + x
 	ld-logout
-
+	
+# Alternate logout
+shift + alt + x
+    ~/.config/rofi/scripts/nakedquit
+    	
 # screenshot and selection capture
-alt + Print
+Print
 	xfce4-screenshooter
+
+# screenshot and selection capture 2
+alt + Print
+	scrot-options
 	 
 # dedicated volume keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}

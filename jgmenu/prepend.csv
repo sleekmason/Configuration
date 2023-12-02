@@ -14,14 +14,14 @@ Configuration,^checkout(configuration),preferences-system
 ^sep()
 All Programs,^checkout(apps),debian-logo
 ^sep()
-Restart, openbox --restart; killall -SIGUSR1 conky, /usr/share/icons/ld-icons/pixmaps/logout_reboot.png
+Restart, openbox --restart; conkyrestart, /usr/share/icons/ld-icons/pixmaps/logout_reboot.png
 Exit,               ld-logout,                 /usr/share/icons/ld-icons/exit4.png
 
 ^tag(quickgrab)
 Theme Folders,^checkout(themes),folder
 Root Folders,^checkout(rootfiles),folder
 Libreoffice,        libreoffice,                       libreoffice-writer
-Geany,              geany,	                           geany
+Geany,              geany,	                       geany
 Pragha,             pragha,                            pragha
 Smplayer,           smplayer,                          smplayer
 Newsboat,           x-terminal-emulator -e newsboat,   accessories-text-editor
@@ -31,7 +31,7 @@ Development,^checkout(development),applications-development
 ^tag(development)
 Meld,               meld,                              document-properties
 Gpick,              gpick,                             gpick
-Geany,              geany,	                           geany
+Geany,              geany,	                       geany
 Icon Browser,       yad-icon-browser,                  galternatives
 
 ^tag(utilities)
@@ -49,7 +49,7 @@ Wallpaper Maker,    wallpaper-maker,                  applications-graphics
 App Alternatives,   galternatives,                    preferences-system
 Update Options,     update-options,                   system-software-update
 Live USB Maker,     x-terminal-emulator -T 'Live USB Maker' -e "sudo live-usb-maker-gui-antix",     gparted
-Lucky Backup,       export QT_QPA_PLATFORMTHEME=gtk2 && luckybackup,  luckybackup
+Lucky Backup,       luckybackup,                      luckybackup
 Printer Setup,      x-terminal-emulator -T "Printer Setup" -e bash -c "printer-installer; read -srn1", printer
 Galculator,         galculator,                       galculator
 Gparted,            gksudo gparted,                   gparted
@@ -76,7 +76,7 @@ Xkill,               xkill,                                         edit-delete
 
 ^tag(rootfiles)
 /etc,                     gksudo thunar /etc,                     folder-documents
-/etc/apt/sources.list,    gksudo geany /etc/apt/sources.list,  folder-documents
+/etc/apt/sources.list,    gksudo geany /etc/apt/sources.list,     folder-documents
 /usr/share,               gksudo thunar /usr/share,               folder-documents
 /usr/bin,                 gksudo thunar /usr/bin,                 folder-documents
 /usr/local/bin,           gksudo thunar /usr/local/bin,           folder-documents
