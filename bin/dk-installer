@@ -1,50 +1,52 @@
 #!/bin/bash
 echo ""
-echo ""
-read -p "   [0;33mdk WM Installer.[0m
+read -p "   [0;32mDk Window Manager Installer[0m
 
-   This is a script to build the dk window manager on your system. 
+   This is a script to install the dk window manager on your system
+   with polybar and sxhkd configurations included.
    
-   This script will download, build, and install the dk window manager, 
-   adding the necessary configuration files to ~/.config/dk for use as 
-   well as adding a simple polybar for statusbar use.
-   
-   This script installs all necessary programs for dk, and then clones
-   the dk repo before building and installing. 
-
-   To uninstall, run: 'dk-uninstaller' in a terminal.
-   
-   Any files in ~/.config/dk and ~/.config/polybar will be overwritten.
-   Please backup these files if already installed and want to keep.
+   Warning - Any files in ~/.config/dk and/or ~/.config/polybar will 
+   be overwritten. A first time backup of these files will be made 
+   if they exist.
    
    For more information: 
-   https://bitbucket.org/natemaia/dk/src/master/
+   [0;33mhttps://bitbucket.org/natemaia/dk/src/master/[0m
    
-   [0;32m-------------------------------------------------------------
+   [0;32m----------------------------------------------------
    
-   Please press enter to build and install the dk window manager
+   Please press enter to install the dk window manager.
    
-   -------------------------------------------------------------[0m
+   ----------------------------------------------------[0m
       
    Or close this terminal window to quit the install." ;
 ## Check for internet connection
    if : >/dev/tcp/8.8.8.8/53; then
 echo ""
-cd /tmp/ &&
-curl -fSL https://bitbucket.org/natemaia/dk/get/v1.9.zip -o dk.zip &&
-# For the latest - possibly unstable, uncomment the below line and comment the curl line.
-#git clone https://bitbucket.org/natemaia/dk.git &&
-unzip dk.zip &&
-sudo apt update && sudo apt install sxhkd build-essential polybar libxcb-randr0-dev libxcb-util-dev libxcb-icccm4-dev libxcb-cursor-dev libxcb-keysyms1-dev &&
-cd natemaia-dk-* &&
-make &&
-sudo make install &&
-cp -r /usr/share/lilidog/extras/dk ~/.config &&
-cp -r /usr/share/lilidog/extras/polybar ~/.config &&
-rm -r /tmp/natemaia-dk-*
-rm -r /tmp/dk.zip
+cd /tmp || exit &&
+rm -f /tmp/dk_1.9-1_amd64.deb
+rm -f /tmp/dk-conf-files.zip
+rm -f -r /tmp/dk-conf-files
+wget https://raw.githubusercontent.com/sleekmason/packages/master/dk_1.9-1_amd64.deb --show-progress -q &&
+wget https://raw.githubusercontent.com/sleekmason/packages/master/dk-conf-files.zip --show-progress -q &&
+unzip -q dk-conf-files.zip &&
+echo ""
+sudo apt update && sudo apt install -y /tmp/./dk_1.9-1_amd64.deb polybar sxhkd &&
+if [ -e "$HOME/.config/dk" ]; then
+   if [ ! -e "$HOME/.config/dk.bak" ]; then
+     cp -r "$HOME/.config/dk" "$HOME/.config/dk.bak"
+   fi
+fi
+if [ -e "$HOME/.config/polybar" ]; then
+   if [ ! -e "$HOME/.config/polybar.bak" ]; then
+     cp -r "$HOME/.config/polybar" "$HOME/.config/polybar.bak"
+   fi
+fi
+cd /tmp/dk-conf-files
+cp -r /tmp/dk-conf-files/dk ~/.config &&
+cp -r /tmp/dk-conf-files/polybar ~/.config &&
 # For .xsessionrc use:
-if ! grep -Fq "DKWM" ~/.xsessionrc; then
+if [ -e "$HOME/.xsessionrc" ]; then
+  if ! grep -Fq "DKWM" ~/.xsessionrc; then
 {
 echo ''
 echo '## Uncomment to use DKWM as default:'
@@ -53,21 +55,26 @@ echo ''
 echo '## Uncomment to use openbox as default: (may not be required)'
 echo '#exec openbox-session'
 } >> ~/.xsessionrc
+  fi
 fi
+if [ -e "/usr/local/bin/show-keybinds-dk" ]; then
 sed -i '/Sxhkd Keys DK,      show-keybinds-dk,                    preferences-desktop-keyboard-shortcuts/d' ~/.config/jgmenu/prepend.csv &&
-sed -i '/Live.*/a Sxhkd Keys DK,      show-keybinds-dk,                    preferences-desktop-keyboard-shortcuts' ~/.config/jgmenu/prepend.csv
-killall jgmenu
+sed -i '/Live USB Maker/a Sxhkd Keys DK,      show-keybinds-dk,                    preferences-desktop-keyboard-shortcuts' ~/.config/jgmenu/prepend.csv
+killall -q jgmenu
+fi
 echo ""
-echo "----------------------------------------------------------------------"
+echo "[0;33m--------------------------------------------------------------"
 echo ""
-echo "[0;32mAll Finished!.
+echo "All Finished!
 
 Logout and choose dk to change WM's if lightdm is installed.
-If lightdm is not installed, uncomment the entry in ~/.xsessionrc to use dkwm.
+If lightdm is not installed, uncomment the entry 'exec dk'
+in ~/.xsessionrc to use dk.
 
-To uninstall, run: 'dk-uninstaller' in a terminal.[0m"
+To uninstall, run: 'dk-uninstaller' in a terminal, or to
+just remove dkwm, run 'sudo apt remove dk'."
 echo "" 
-echo "----------------------------------------------------------------------"
+echo "--------------------------------------------------------------[0m"
 else
 echo ""
  echo "   [0;31m-------------------------------------------------------"
@@ -77,4 +84,3 @@ echo ""
  echo "   -------------------------------------------------------[0m"
 echo ""
 fi
-read -n1 -p " Press any key to quit this dialog ... "
