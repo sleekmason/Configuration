@@ -50,5 +50,8 @@ sxhkd -c "$HOME/.config/openbox/sxhkdrc-open" &
 
 ### Start brightness tray icon on login
 # sleep 2 && bright-gamma &
+diction &
+# sleep 20 && kdocker -i "/usr/share/icons/hicolor/16x16/apps/thunderbird.png" -jl thunderbird >/dev/null 2>&1 &
 
+vmrestore &
 welcome-backend.sh &

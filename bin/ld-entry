@@ -20,7 +20,14 @@ while getopts 'iq' OPTION; do
     case "$OPTION" in
       i)
 	_interactive="yes"
-	echo -e " [0;32m\n Entering interactive mode to customize Lilidog.\n Please make your selections carefully.\n[0m"
+	echo ""
+	echo -e " [0;32m--------------------------------------------------[0m"
+	echo ""
+	echo -e " [0;32m\n Entering interactive script to customize Lilidog.\n[0m"
+	echo -e " [0;33m--------------------------------------------------[0m"
+	echo -e " [0;33m\n Please only use letters 'y' or 'n' for selections.\n[0m"
+	echo -e " [0;33m--------------------------------------------------[0m"
+	echo ""
 	break
       ;;
 
@@ -128,7 +135,11 @@ _autologin() {
 
 _reboot() {
       _msg="Update complete. Reboot? (Y if new kernel installed)"
-      do_it() { sed -i '/welcome.sh &/d' /home/"${SUDO_USER}"/.config/openbox/autostart && reboot ;}
+      do_it() { sed -i '/welcome-backend.sh.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
+		  if ! grep hypervisor /proc/cpuinfo ; then
+          sed -i '/vmrestore.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
+          fi
+          reboot ;}
         see_it
         no_see
         run_it
@@ -143,6 +154,10 @@ _osprober
 _firmware
 #_autologin
 _reboot
+sed -i '/welcome-backend.sh.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
+if ! grep hypervisor /proc/cpuinfo ; then
+sed -i '/vmrestore.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
+fi
 else
 _update
 _remove_packages
@@ -151,10 +166,15 @@ _upgrade_kernel
 _firmware
 #_autologin
 _reboot
+sed -i '/welcome-backend.sh.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
+if ! grep hypervisor /proc/cpuinfo ; then
+sed -i '/vmrestore.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
+fi
 fi
 [ "$_interactive" = "yes" ] &&
+echo
+echo
 echo $'\n\nPress any key to quit ...'; read -srn1
-sed -i '/welcome-backend.sh &/d' /home/"${SUDO_USER}"/.config/openbox/autostart
 echo
 else
 echo ""

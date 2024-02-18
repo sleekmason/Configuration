@@ -1,0 +1,33 @@
+#!/bin/bash
+if grep hypervisor /proc/cpuinfo ; then
+
+WORDS(){
+notify-send --urgency low "Right Click For Display Resolution Options ..."
+}	
+toggleit1(){
+notify-send --urgency low "Adjusting Resolution To 1440x900 ..."
+xrandr -s "1440x900"
+    ~/.fehbg
+}
+toggleit2(){
+notify-send --urgency low "Adjusting Resolution To 1280x800 ..."
+xrandr -s "1280x800"
+    ~/.fehbg
+}
+toggleit3(){
+notify-send --urgency low "Adjusting Resolution To 800x600 ..."
+xrandr -s "800x600"
+    ~/.fehbg
+}
+export -f WORDS
+export -f toggleit1
+export -f toggleit2
+export -f toggleit3
+    
+    yad --notification --listen --image="/usr/share/icons/ld-icons/toggle.png" \
+    --text="Change Resolution - Right Click For Options" \
+    --menu="1440x900!bash -c toggleit1!applications-graphics|1280x800!bash -c toggleit2!applications-graphics|800x600!bash -c toggleit3!applications-graphics|Quit!quit!application-exit" \
+    --command="bash -c toggleit1"
+else
+	exit
+fi

@@ -1,24 +1,61 @@
 #!/bin/sh
 
 # example dkrc to show some basic command usage and error reporting
-
+# Original configurations by PackRat for Lilidog 2-15-2024
 # determine where to place the log file
+
 logfile="$HOME/.dkrc.log"
 [ -d "$HOME/.local/share/xorg" ] && logfile="$HOME/.local/share/xorg/dkrc.log"
 : > "$logfile"
 
 
-#Load some things for startup
-xfsettingsd --daemon &
-. $HOME/.fehbg &
-lxpolkit &
-picom &
-( killall polybar; sleep 1; polybar -c ~/.config/polybar/config lili-bar ) &
-nm-applet &
 # (re)load sxhkd for keybinds
 if hash sxhkd >/dev/null 2>&1; then
 	pkill sxhkd
 	sxhkd -c "$HOME/.config/dk/sxhkdrc" &
+fi
+
+## applicaton autostart
+
+# polkit
+lxpolkit &
+
+## Transparency
+#picom --daemon &
+
+# background/wallpaper
+xsetroot -solid "#352B66"
+$HOME/.fehbg &
+
+# polybar
+( killall polybar; sleep 1; polybar dkwm-bar & ) &
+
+# sound
+killall -q pnmixer ; pnmixer &
+
+# wifi
+if hash nm-applet >/dev/null 2>&1; then
+	killall -q nm-applet
+	nm-applet &
+fi
+
+## System gtktheme, icon theme
+xfsettingsd --daemon &
+
+# adjust border widths based on the DPI of the monitor
+px=$(xrandr | grep ' connected' | tail -n1 | grep -o '[0-9]\+x[0-9]\+' | cut -d'x' -f2)
+mm=$(xrandr | grep ' connected' | tail -n1 | grep -o '[0-9]\+mm' | tail -n1 | sed 's/mm//')
+dpi=$(( (px / mm) * 25 ))
+
+if [ $dpi -ge 140 ]; then
+	border_width=5
+	border_outer_width=3
+elif [ $dpi -ge 120 ]; then
+	border_width=4
+	border_outer_width=2
+else
+	border_width=2
+	border_outer_width=1
 fi
 
 { # compound command to redirect all output
@@ -26,15 +63,15 @@ fi
 	# workspace settings
 	# ------------------------
 
-	# initialize 10 workspaces (1-10) (default: 1/monitor)
-	dkcmd set numws=10
+	# initialize 6 workspaces (1-6) (default: 1/monitor)
+	dkcmd set numws=6
 
 	# default workspace '_' values used when allocating new workspaces
 	# can be applied to all existing workspaces when passed 'apply' after ws=_
 	dkcmd set ws=_ apply layout=tile master=1 stack=3 gap=0 msplit=0.5 ssplit=0.5
 
 	# use grid layout, padding, and gaps on workspace 10
-    dkcmd set ws=10 layout=grid pad left=200 right=200 top=100 bottom=100 gap=50
+	dkcmd set ws=6 layout=grid pad left=200 right=200 top=100 bottom=100 gap=50
 
 	# change workspace names (default: number == name)
 	# dkcmd set \
@@ -44,10 +81,6 @@ fi
 	# 	ws=4  name="😠" \
 	# 	ws=5  name="5" \
 	# 	ws=6  name="6" \
-	# 	ws=7  name="7" \
-	# 	ws=8  name="8" \
-	# 	ws=9  name="9" \
-	# 	ws=10 name="10"
 
 	# enable static workspaces and assign them to monitors (only relevant for multiple monitors)
 	# aside -
@@ -61,13 +94,9 @@ fi
 	# 	ws=1  mon=$mon1 \
 	# 	ws=2  mon=$mon1 \
 	# 	ws=3  mon=$mon1 \
-	# 	ws=4  mon=$mon1 \
-	# 	ws=5  mon=$mon1 \
+	# 	ws=4  mon=$mon2 \
+	# 	ws=5  mon=$mon2 \
 	# 	ws=6  mon=$mon2 \
-	# 	ws=7  mon=$mon2 \
-	# 	ws=8  mon=$mon2 \
-	# 	ws=9  mon=$mon2 \
-	# 	ws=10 mon=$mon2
 
 
 	# global settings
@@ -88,25 +117,28 @@ fi
 	# define mouse mod and move/resize buttons
 	dkcmd set mouse mod=alt move=button1 resize=button3
 
+	# obey motif border hints on windows that draw their own (steam, easyeffects, etc.)
+	dkcmd set obey_motif=true
+
 
 	# borders
 	# ---------
 
 	# traditional
 	# set border width and colour for each window state
-	# dkcmd set border width=1 colour focus='#6699cc' unfocus='#000000' urgent='#ee5555'
+	# dkcmd set border width=$border_width colour focus='#6699cc' unfocus='#000000' urgent='#ee5555'
 
 	# alternative
-	# enable split borders and colours, width is overall width, outer width consumes some of width.
-	# outer width must be less than width, outer width of 0 will be single borders
-	dkcmd set border width=5 outer_width=3 \
+	# enable split borders and colours, width is overall width, outer_width consumes some of width.
+	# outer_width must be less than width, outer_width of 0 will be single borders
+	dkcmd set border width=$border_width outer_width=$border_outer_width \
 		colour \
-		focus='#6699cc' \
-		unfocus='#444444' \
+	    focus='#507BA1' \
+		unfocus='#34383D' \
 		urgent='#ee5555' \
-		outer_focus='#222222' \
-		outer_unfocus='#222222' \
-		outer_urgent='#222222'
+		outer_focus='#272B30' \
+		outer_unfocus='#272B30' \
+		outer_urgent='#272B30'
 
 
 	# window rules
@@ -121,19 +153,28 @@ fi
 	dkcmd rule class="^chromium$" mon="HDMI-A-0"
 
 	# open window(s) and use a callback function (user defined in config.h)
-	# we also ignore=true to stop the window from being resized on it's own from events
+	# we also ignore_cfg=true to stop the window from being resized on it's own from events
 	# eg. mpv --x11-name=albumart /path/to/media
-	dkcmd rule class="^mpv$" instance="^albumart$" float=true ignore=true callback=albumart bw=0
+	dkcmd rule class="^mpv$" instance="^albumart$" float=true ignore_cfg=true callback=albumart bw=0
 
 	# open window(s) in a floating state
-	dkcmd rule class="^(pavucontrol|yad|transmission-gtk|steam|feh|lxappearance)$" float=true
+	dkcmd rule class="^(pavucontrol|transmission-gtk|steam|lxappearance)$" float=true
+	dkcmd rule class="^(Yad|XCalc|Galculator|gammy|Pragha)$" float=true
 
 	# open window(s) with a specific geometry and coordinates (floating only!)
 	dkcmd rule class="^google-chrome$" title="^open files$" float=true w=1280 h=720
 
-	# open window(s) with sticky and floating enabled to view on all workspaces.
-	dkcmd rule class="^stickyterm$" stick=true float=true w=1280 h=720
-	dkcmd rule class="^scratchpad$" float=true
+	# open window(s) with ignore_msg=true to avoid focus being grabbed and changing workspace
+	dkcmd rule class="^TelegramDesktop$" ignore_msg=true
+
+	# define some terminals and allow them to be absorbed by spawned windows
+	dkcmd rule class="^(st|st-256color|urxvt|kitty|alacritty|xterm|xterm-256colors)$" terminal=true
+
+	# set a window to never absorb other windows, like the xev event tester
+	dkcmd rule title="^Event Tester$" no_absorb=true
+
+	# send a window to the scratchpad
+	dkcmd rule class="^scratchpad$" scratch=true
 
 	# focus window and workspace on opening
 	dkcmd rule class="^firefox$" ws=1 focus=true
@@ -142,7 +183,7 @@ fi
 	dkcmd rule class="^firefox$" mon="HDMI-A-0"
 	dkcmd rule remove class="^firefox$"
 
-	# apply current rule set to all existing windows
+	# apply current rule set to all existing windows (used mainly for WM restart)
 	dkcmd rule apply '*'
 
 	# delete all rules

@@ -17,10 +17,6 @@ mod4 + Escape
 alt + F1
 	jgmenu_run
 
-# Dmenu.
-alt + d
-	~/.config/dmenu/dmenu
-
 # Rofi full.
 alt + F2
 	~/.config/rofi/scripts/rofi-familiar
@@ -32,46 +28,10 @@ alt + F3
 # Dmenu.
 alt + F5
 	~/.config/dmenu/dmenu
-    
-# ld-themes.
-mod4 + F4
-	ld-themes
-    
-# Terminal colors.
-mod4 + F5
-	ld-term-changer
-    
-# Fontsize.
-mod4 + F6
-	fontsize-changer
-    
-# Hotcorners.
-mod4 + F8
-	toggle.ld  
-
-# Conky changer.
-mod4 + c
-	~/.config/conky/scripts/conky-chooser
-    
-# Gammy.
-mod4 + g
-	toggle.gammy
- 
-# jgmenu.
-mod4 + j
-	jgmenu_run 
-   
-# Switch to light theme and back.
-mod4 + y
-	light-dark-toggle
-
-# Switch to custom theme and back.
-mod4 + u
-	custom-theme-toggle
 
 # Toggle polybar panel on/off.
 ctrl mod4 + p
-	toggle.polybar
+	toggle.polybar-dk
 
 # Toggle tint2 panel on/off.
 ctrl mod4 + t

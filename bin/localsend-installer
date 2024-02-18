@@ -1,0 +1,42 @@
+#!/bin/bash
+echo ""
+read -r -p "   [0;33mLocalsend Installer[0m
+
+   Share files to nearby devices. Free, open source, cross-platform.
+   
+   [0;32mhttps://github.com/localsend/localsend[0m
+   
+   [0;33m----------------------------------------------------------
+   
+   Please press enter to install Localsend.
+   
+   ----------------------------------------------------------[0m
+      
+   Or close this terminal window to quit the install." ;
+   if : >/dev/tcp/8.8.8.8/53; then
+echo ""
+cd /tmp || exit
+rm -f LocalSend*
+wget https://github.com/localsend/localsend/releases/download/v1.12.0/LocalSend-1.12.0-linux-x86-64.deb --show-progress -q
+echo ""
+echo ""
+sudo apt update && sudo apt install -y /tmp/./LocalSend*
+
+sed -i '/Localsend,           localsend_app,                          localsend_app/d' ~/.config/jgmenu/prepend.csv &&
+sed -i '/Root Folders,^checkout(rootfiles),folder/a Localsend,           localsend_app,                          localsend_app' ~/.config/jgmenu/prepend.csv &&
+
+echo ""
+echo "[0;32m----------------------------------------------------------------------[0m"
+echo ""
+echo "   [0;32mA new menu entry for localsend can be found in the Quickgrab Menu.[0m"
+echo ""
+echo "[0;32m----------------------------------------------------------------------[0m"
+else
+echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+ echo ""
+ echo "   [0;33mNo Internet connection. Please connect and try again.[0m"
+ echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+echo ""
+fi
