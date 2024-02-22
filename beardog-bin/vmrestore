@@ -1,0 +1,19 @@
+#!/bin/bash
+## resolution change when in a VM.
+## by sleekmason 1-21-2024
+
+toggleit(){
+	notify-send -t 12000 --urgency low " Wallpaper corruption will be fixed on 'Close'"
+	xfce4-display-settings &&
+	~/.fehbg
+	
+}
+export -f toggleit	
+if grep hypervisor /proc/cpuinfo ; then
+    yad --notification --listen --image="/usr/share/icons/ld-icons/display.png" \
+    --text="Display Settings ┃ All Options" \
+    --menu="Display Settings!bash -c toggleit!display|Wallpaper Fix!bash -c ~/.fehbg!org.xfce.settings.display|Exit!quit!application-exit" \
+    --command="bash -c toggleit"
+else 
+	exit
+fi

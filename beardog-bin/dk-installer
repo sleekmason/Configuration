@@ -1,0 +1,91 @@
+#!/bin/bash
+echo ""
+read -p "   [0;32mDk Window Manager Installer[0m
+
+   This is a script to install the dk window manager on your system
+   with polybar, jgmenu, and sxhkd configurations included.
+   
+   Warning - Any files in ~/.config/dk and ~/.config/polybar will be
+   overwritten. If existing, a backup of these files will be made.
+   ~/.config/dk.bak and ~/.config/polybar.bak. First backup only.
+   
+   For more information: 
+   [0;33mhttps://bitbucket.org/natemaia/dk/src/master/[0m
+   
+   [0;32m----------------------------------------------------
+   
+   Please press enter to install the dk window manager.
+   
+   ----------------------------------------------------[0m
+      
+   Or close this terminal window to quit the install." ;
+## Check for internet connection
+   if : >/dev/tcp/8.8.8.8/53; then
+echo ""
+sudo apt update
+cd /tmp || exit &&
+rm -f /tmp/dk_2.0-1~lilidog_amd64.deb
+rm -f /tmp/dk-conf-files.zip
+rm -f -r /tmp/dk-conf-files
+wget https://raw.githubusercontent.com/sleekmason/packages-dk/master/deb-files/dk_2.0-1~lilidog_amd64.deb --show-progress -q &&
+wget https://raw.githubusercontent.com/sleekmason/packages-dk/master/zip-files/dk-conf-files2.zip --show-progress -q &&
+unzip -q dk-conf-files2.zip &&
+echo ""
+sudo apt install -y /tmp/./dk_2.0-1~lilidog_amd64.deb polybar sxhkd &&
+if [ -e "$HOME/.config/dk" ]; then
+   if [ ! -e "$HOME/.config/dk.bak" ]; then
+     cp -r "$HOME/.config/dk" "$HOME/.config/dk.bak"
+   fi
+fi
+if [ -e "$HOME/.config/polybar" ]; then
+   if [ ! -e "$HOME/.config/polybar.bak" ]; then
+     cp -r "$HOME/.config/polybar" "$HOME/.config/polybar.bak"
+   fi
+fi
+cp -r /tmp/dk-conf-files/dk ~/.config
+cp -r /tmp/dk-conf-files/polybar ~/.config
+cp /tmp/dk-conf-files/jgmenudkwmrc ~/.config/jgmenu
+sudo cp /tmp/dk-conf-files/dk.png /usr/share/icons/ld-icons
+# For .xsessionrc use:
+if [ -e "$HOME/.xsessionrc" ]; then
+  if ! grep -Fq "DKWM" ~/.xsessionrc; then
+{
+echo ''
+echo '## Uncomment to use DKWM as default:'
+echo '#exec dk'
+echo ''
+echo '## Uncomment to use openbox as default: (may not be required)'
+echo '#exec openbox-session'
+} >> ~/.xsessionrc
+  fi
+fi
+if [ -e "/usr/local/bin/show-keybinds-dk" ]; then
+sed -i '/Sxhkd Keys DK,      show-keybinds-dk,                    \/usr\/share\/icons\/ld-icons\/dk.png/d' ~/.config/jgmenu/prepend.csv &&
+sed -i '/Live.*/a Sxhkd Keys DK,      show-keybinds-dk,                    \/usr\/share\/icons\/ld-icons\/dk.png' ~/.config/jgmenu/prepend.csv
+killall -q jgmenu
+fi
+echo ""
+echo "   [0;32m--------------------------------------------------------------"
+echo ""
+echo "   All Finished![0m"
+echo ""
+echo "   [0;33mLogout and choose dk to change WM's if lightdm is installed."
+echo ""
+echo "   If lightdm is not installed, uncomment the entry 'exec dk'
+   in ~/.xsessionrc to use dk. Log out and back in to switch.[0m"
+echo ""
+echo "   [0;31mTo uninstall, run: 'dk-uninstaller' in a terminal, or to
+   just remove dkwm, run 'sudo apt remove dk'.[0m"
+echo "" 
+echo "   [0;32m--------------------------------------------------------------[0m"
+else
+echo ""
+ echo "   [0;31m-------------------------------------------------------"
+ echo ""
+ echo "   No Internet connection. Please connect and try again."
+ echo ""
+ echo "   -------------------------------------------------------[0m"
+echo ""
+fi
+echo ""
+read -n1 -p " Press any key to quit this dialog ... "
