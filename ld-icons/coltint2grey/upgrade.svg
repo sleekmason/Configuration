@@ -3,7 +3,7 @@
    viewBox="0 0 512 512"
    version="1.1"
    id="svg1175"
-   sodipodi:docname="upgrade2.svg"
+   sodipodi:docname="upgrade.svg"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -14,7 +14,7 @@
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Colorize"
-       id="filter742"
+       id="filter282"
        x="0"
        y="0"
        width="1"
@@ -25,42 +25,42 @@
          k1="0"
          k2="1"
          result="composite1"
-         id="feComposite728" />
+         id="feComposite268" />
       <feColorMatrix
          in="composite1"
          values="1"
          type="saturate"
          result="colormatrix1"
-         id="feColorMatrix730" />
+         id="feColorMatrix270" />
       <feFlood
          flood-opacity="1"
-         flood-color="rgb(90,96,102)"
+         flood-color="rgb(111,119,127)"
          result="flood1"
-         id="feFlood732" />
+         id="feFlood272" />
       <feBlend
          in="flood1"
          in2="colormatrix1"
          mode="multiply"
          result="blend1"
-         id="feBlend734" />
+         id="feBlend274" />
       <feBlend
          in2="blend1"
          mode="screen"
          result="blend2"
-         id="feBlend736" />
+         id="feBlend276" />
       <feColorMatrix
          in="blend2"
          values="1"
          type="saturate"
          result="colormatrix2"
-         id="feColorMatrix738" />
+         id="feColorMatrix278" />
       <feComposite
          in="colormatrix2"
          in2="SourceGraphic"
          operator="in"
          k2="1"
          result="composite2"
-         id="feComposite740" />
+         id="feComposite280" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -86,5 +86,5 @@
   <path
      d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"
      id="path1173"
-     style="fill:#cccccc;filter:url(#filter742)" />
+     style="fill:#cccccc;filter:url(#filter282)" />
 </svg>

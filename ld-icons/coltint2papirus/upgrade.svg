@@ -23,10 +23,10 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="17.083333"
-     inkscape:cx="24.058537"
+     inkscape:cx="24.117074"
      inkscape:cy="23.004878"
      inkscape:window-width="1920"
-     inkscape:window-height="1028"
+     inkscape:window-height="1032"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -39,12 +39,12 @@
      rx="20"
      ry="19.196215" />
   <ellipse
-     style="fill:#127bca;stroke-width:0.991401"
+     style="fill:#127bca;stroke-width:1.09054"
      cx="24"
      cy="24.342484"
      id="circle4"
-     rx="20"
-     ry="19.657516" />
+     rx="22"
+     ry="21.623268" />
   <path
      style="opacity:0.2;fill:#ffffff;stroke-width:0.999662"
      d="M 24,4.0139786 A 20,19.986417 0 0 0 4,24.000395 20,19.986417 0 0 0 4.0215,24.582 20,19.986417 0 0 1 24,5.0132994 20,19.986417 0 0 1 43.979,24.418112 20,19.986417 0 0 0 44,24.000395 20,19.986417 0 0 0 24,4.0139786 Z"

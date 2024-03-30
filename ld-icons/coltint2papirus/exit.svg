@@ -23,13 +23,13 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="17.083333"
-     inkscape:cx="24"
+     inkscape:cx="24.087805"
      inkscape:cy="24"
-     inkscape:window-width="1920"
+     inkscape:window-width="1423"
      inkscape:window-height="1028"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg12" />
   <circle
      style="opacity:0.2"
@@ -38,10 +38,10 @@
      r="20"
      id="circle2" />
   <circle
-     style="fill:#00b56c"
+     style="fill:#00b56c;stroke-width:1.1"
      cx="24"
      cy="24"
-     r="20"
+     r="22"
      id="circle4" />
   <path
      style="opacity:0.2;fill:#ffffff"

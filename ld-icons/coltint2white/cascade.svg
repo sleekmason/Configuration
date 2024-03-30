@@ -22,8 +22,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.609375"
-     inkscape:cx="257.5534"
-     inkscape:cy="228.34951"
+     inkscape:cx="258.17476"
+     inkscape:cy="228.97087"
      inkscape:window-width="1423"
      inkscape:window-height="1023"
      inkscape:window-x="0"
@@ -32,7 +32,7 @@
      inkscape:current-layer="svg1031" />
   <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
   <path
-     d="M 434.49913,24.496767 40.266466,204.27429 C -5.243798,225.25927 9.9262901,291.21205 58.470572,291.21205 H 225.24672 v 164.78826 c 0,47.96565 66.7484,62.95492 87.98652,17.98712 L 495.17948,84.453837 C 510.34957,48.479595 470.90734,9.5074991 434.49913,24.496767 Z"
+     d="M 77.021425,24.496767 471.25409,204.27429 c 45.51026,20.98498 30.34017,86.93776 -18.20411,86.93776 H 286.27383 v 164.78826 c 0,47.96565 -66.7484,62.95492 -87.98652,17.98712 L 16.341075,84.453837 C 1.1709846,48.479595 40.613215,9.5074991 77.021425,24.496767 Z"
      id="path1029"
-     style="stroke-width:0.942463;fill:#ffffff" />
+     style="fill:#ffffff;stroke-width:0.942463" />
 </svg>

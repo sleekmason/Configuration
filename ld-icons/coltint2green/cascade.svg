@@ -74,8 +74,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.609375"
-     inkscape:cx="257.5534"
-     inkscape:cy="228.34951"
+     inkscape:cx="258.17476"
+     inkscape:cy="228.97087"
      inkscape:window-width="1423"
      inkscape:window-height="1023"
      inkscape:window-x="0"
@@ -86,5 +86,6 @@
   <path
      d="M 434.49913,24.496767 40.266466,204.27429 C -5.243798,225.25927 9.9262901,291.21205 58.470572,291.21205 H 225.24672 v 164.78826 c 0,47.96565 66.7484,62.95492 87.98652,17.98712 L 495.17948,84.453837 C 510.34957,48.479595 470.90734,9.5074991 434.49913,24.496767 Z"
      id="path1029"
-     style="stroke-width:0.942463;fill:#cccccc;filter:url(#filter626)" />
+     style="fill:#cccccc;stroke-width:0.942463;filter:url(#filter626)"
+     transform="matrix(-1,0,0,1,511.52055,0)" />
 </svg>
