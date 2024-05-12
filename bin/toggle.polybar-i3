@@ -1,0 +1,8 @@
+#!/bin/bash
+if pgrep -x polybar > /dev/null; then
+    pkill -x polybar
+    pkill -f nm-applet
+else
+   polybar i3-bar > /dev/null 2>&1 &
+   nm-applet &
+fi
