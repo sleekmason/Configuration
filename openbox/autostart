@@ -30,9 +30,9 @@
 
 
 ### Common startup programs. Comment any item no longer wanted.
-. $HOME/.fehbg &
+~/.fehbg &
 picom --daemon &
-tint2 &
+tint2 >/dev/null 2>&1 &
 nm-applet &
 lxpolkit &
 xfsettingsd --daemon &
@@ -50,8 +50,6 @@ sxhkd -c "$HOME/.config/openbox/sxhkdrc-open" &
 
 ### Start brightness tray icon on login
 # sleep 2 && bright-gamma &
-diction &
-# sleep 20 && kdocker -i "/usr/share/icons/hicolor/16x16/apps/thunderbird.png" -jl thunderbird >/dev/null 2>&1 &
 
 vmrestore &
 welcome-backend.sh &
