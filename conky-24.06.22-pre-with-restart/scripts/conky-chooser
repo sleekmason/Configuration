@@ -22,20 +22,6 @@ if pgrep -f "$FILE" > /dev/null; then
 fi
 }
 
-RESTART(){
-conkyfile=$HOME/.config/conky/scripts/conky-restart-list
-# Copy currently running conkys to file -
-ps aux | grep -i conky | awk '{ print $13 }' | tail > "$conkyfile" &&
-# Adjust file for correct lines
-sed -i "/^Conky\b/d" "$conkyfile"
-sed -i "/^conky\b/d" "$conkyfile"
-sed -i "/^KILLCONKY\b/d" "$conkyfile"
-sed -i '/^[[:space:]]*$/d' "$conkyfile"
-sed -i -e 's/^/conky -c /' "$conkyfile"
-sed -i '1i #!/bin/bash' "$conkyfile"
-chmod 755 "$conkyfile"
-}
-
 TIMEDATE(){
 	FILE=$HOME/.config/conky/conky-clock-date.conf
 $(MAIN) >/dev/null 2>&1 "$FILE"
@@ -76,14 +62,7 @@ FILE=$HOME/.config/conky/conky-world-clock.conf
 $(MAIN) >/dev/null 2>&1 "$FILE"
 }
 
-KILLCONKY(){
-killall "conky"
-sleep .50
-eval "$(RESTART)" >/dev/null 2>&1
-}
-
 export -f MAIN
-export -f RESTART
 export -f TIMEDATE
 export -f FULLCONKY
 export -f FORTUNES
@@ -91,13 +70,9 @@ export -f TAO
 export -f SHORTCUTS
 export -f BUILDDATE
 export -f WORLDCLOCK
-export -f KILLCONKY
 
-if ! [[ $(command -v conky) ]]; then
-notify-send --urgency low "Install 'conky-all' to use this dialog"
-else
-yad --title "Conky" --form --center --width=220 --height=600 \
---borders=12 --text="Toggle Your Selections\n" --text-align=center \
+yad --title "Conky" --button=gtk-ok:0 --form --center --width=230 \
+--height=600 --text="\nToggle Your Selections\n" --text-align=center \
 --window-icon=conky-logomark-violet \
     --form \
     --field="                          Clock!appointment-new":BTN "bash -c 'TIMEDATE' >/dev/null 2>&1 &" \
@@ -111,6 +86,4 @@ yad --title "Conky" --form --center --width=220 --height=600 \
     --field="       Bg Transparency!preferences-system":FBTN "bash -c '~/.config/conky/scripts/conky-bg-trans'" \
     --field="             Bg Tint Color!org.xfce.settings.color":FBTN "bash -c '~/.config/conky/scripts/conky-bg-color'" \
     --field="            Restart Conky!media-playlist-repeat":FBTN "conkyrestart" \
-    --field="                  Kill Conky!process-stop":FBTN "bash -c KILLCONKY"
-fi
-eval "$(RESTART)" >/dev/null 2>&1
+    --field="                  Kill Conky!process-stop":FBTN "killall conky"

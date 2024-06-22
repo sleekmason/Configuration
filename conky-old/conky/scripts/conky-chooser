@@ -25,15 +25,15 @@ fi
 RESTART(){
 conkyfile=$HOME/.config/conky/scripts/conky-restart-list
 # Copy currently running conkys to file -
-ps aux | grep -i conky | awk '{ print $13 }' | tail > "$conkyfile" &&
+ps aux | grep -i conky | awk '{ print $13 }' | tail > $conkyfile &&
 # Adjust file for correct lines
-sed -i "/^Conky\b/d" "$conkyfile"
-sed -i "/^conky\b/d" "$conkyfile"
-sed -i "/^KILLCONKY\b/d" "$conkyfile"
-sed -i '/^[[:space:]]*$/d' "$conkyfile"
-sed -i -e 's/^/conky -c /' "$conkyfile"
-sed -i '1i #!/bin/bash' "$conkyfile"
-chmod 755 "$conkyfile"
+sed -i "/^Conky\b/d" $conkyfile
+sed -i "/^conky\b/d" $conkyfile
+sed -i "/^KILLCONKY\b/d" $conkyfile
+sed -i '/^[[:space:]]*$/d' $conkyfile
+sed -i -e 's/^/conky -c /' $conkyfile
+sed -i '1i #!/bin/bash' $conkyfile
+chmod 755 $conkyfile
 }
 
 TIMEDATE(){
@@ -79,7 +79,7 @@ $(MAIN) >/dev/null 2>&1 "$FILE"
 KILLCONKY(){
 killall "conky"
 sleep .50
-eval "$(RESTART)" >/dev/null 2>&1
+$(RESTART) >/dev/null 2>&1
 }
 
 export -f MAIN
@@ -113,4 +113,4 @@ yad --title "Conky" --form --center --width=220 --height=600 \
     --field="            Restart Conky!media-playlist-repeat":FBTN "conkyrestart" \
     --field="                  Kill Conky!process-stop":FBTN "bash -c KILLCONKY"
 fi
-eval "$(RESTART)" >/dev/null 2>&1
+$(RESTART) >/dev/null 2>&1 &
