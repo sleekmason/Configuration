@@ -260,10 +260,10 @@ entry {
       background-color: #f57900; }
   spinbutton:not(.vertical) image,
   entry image {
-    color: #1E6E4D; }
+    color: #2FAD79; }
     spinbutton:not(.vertical) image:hover,
     entry image:hover {
-      color: #2FAD79; }
+      color: #3EE09C; }
     spinbutton:not(.vertical) image:active,
     entry image:active {
       color: #1E6E4D; }
@@ -1455,16 +1455,16 @@ spinbutton:not(.vertical) {
     margin: 0;
     padding-bottom: 0;
     padding-top: 0;
-    color: #2B9E6E;
+    color: #2FAD79;
     background-image: none;
     border-style: none none none solid;
-    border-color: #217955;
+    border-color: #268C61;
     border-radius: 0;
     box-shadow: none; }
     spinbutton:not(.vertical) button:dir(rtl) {
       border-style: none solid none none; }
     spinbutton:not(.vertical) button:hover {
-      color: #47D67B;
+      color: #41EBA3;
       background-color: rgba(60, 60, 60, 0.05); }
     spinbutton:not(.vertical) button:disabled {
       color: #4B606B;
@@ -2590,7 +2590,7 @@ scrollbar {
     background-clip: padding-box;
     background-image: linear-gradient(to right, #1E6E4D, #1E6E4D); }
     scrollbar slider:hover {
-      background-image: linear-gradient(to right, #268C61, #268C61); }
+      background-image: linear-gradient(to right, #2B9E6E, #2B9E6E); }
     scrollbar slider:hover:active {
       background-color: #1B6346; }
     scrollbar slider:backdrop {
