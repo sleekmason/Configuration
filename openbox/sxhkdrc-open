@@ -36,7 +36,7 @@ mod4 + F5
 
 # Conky.
 mod4 + c
-	~/.config/conky/scripts/conky-chooser
+	conky-toggle
         
 # Gammy.
 mod4 + g
@@ -88,7 +88,7 @@ mod4 + v
     
 # Web browser.
 mod4 + b
-	firefox-esr
+	x-www-browser
 
 # Logout.
 mod4 + x

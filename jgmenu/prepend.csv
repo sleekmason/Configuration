@@ -42,12 +42,12 @@ Inxi Info,          x-terminal-emulator -T 'Inxi Info' -e bash -c "inxi -Fxrzm; 
 Hard Info,          hardinfo,                         drive-multidisk
 HW-Probe,           x-terminal-emulator -T 'Hw-Probe' -e bash -c "hw-probe-installer; echo $'\n\nPress any key to close.'; read -srn1",  applications-system
 Transmission,       transmission-gtk,                     transmission
-Color Chooser,      yad --color,                      applications-graphics
+Color Chooser,      yad --color --gtk-palette --palette=/usr/share/X11/rgb.txt,                     org.xfce.settings.color
 Kernel Remover,     x-terminal-emulator -T 'Kernel Remover' -e 'sudo kernel-remover -G dialog',     applications-accessories
 Check Firmware,     x-terminal-emulator -T 'Firmware Checker' -e bash -c "firmware-checker; echo $'\n\nPress any key to close.'; read -srn1",  applications-system
 Wallpaper Maker,    wallpaper-maker,                  applications-graphics
+Upgrade Options,    update-options,                   system-software-update
 App Alternatives,   galternatives,                    org.xfce.settings.default-applications
-Update Options,     update-options,                   system-software-update
 Live USB Maker,     x-terminal-emulator -T 'Live USB Maker' -e "sudo live-usb-maker-gui-antix",     gparted
 Sxhkd Keys OB,      show-keybinds,                    preferences-desktop-keyboard-shortcuts
 Lucky Backup,       luckybackup,                      luckybackup
@@ -62,6 +62,7 @@ Conky,               conky-toggle,                                  preferences-
 Gammy,               toggle.gammy,                                  preferences-desktop-personal
 Jgmenu,              jg-icon-changer,                               preferences-desktop-personal
 Rofi Icons,          rofi-options,                                  preferences-desktop-personal
+Font Sizes,          fontsize-changer,                              preferences-desktop-personal
 Hotcorners,          toggle.ld,                                     preferences-desktop-personal
 Random BG,           toggle-wallpaper-random,                       preferences-desktop-personal
 Tint2 Options,       tint2-options,                                 preferences-desktop-personal
@@ -109,5 +110,6 @@ Picom,               geany ~/.config/picom.conf,                                
 Dmenu F3,            geany ~/.config/dmenu/apps,                                           document-properties
 Ld-Hotcorners,       geany ~/.config/ld-hotcorners/ld-hotcornersrc,                        applications-engineering
 Grub Background,     x-terminal-emulator -T 'Grub Background Changer' -e bash -c "grub-bg-changer; echo $'\n\nPress any key to close.'; read -srn1",  preferences-desktop-wallpaper
+Plymouth Background, x-terminal-emulator -T 'Plymouth Background Changer' -e bash -c "plymouth-changer; echo $'\n\nPress any key to close.'; read -srn1",  preferences-desktop-wallpaper
 
 ^tag(apps)
