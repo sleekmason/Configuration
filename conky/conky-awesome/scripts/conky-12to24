@@ -2,19 +2,21 @@
 
 # Made by sleekmason 1-15-2022
 
-time_format=$(grep -E "%H" ~/.config/awesome/conky-awesome/conky-shortcuts.conf)
+time_format=$(grep -E "%H" "$HOME/.config/awesome/conky-awesome/scripts/defaults.txt")
 
 if [[ "$time_format" ]]; then
-sed -i 's/%H/%I/g' ~/.config/awesome/conky-awesome/conky-clock.conf
-sed -i 's/%H/%I/g' ~/.config/awesome/conky-awesome/conky-clock-date.conf
-sed -i 's/%H/%I/g' ~/.config/awesome/conky-awesome/conky-full.conf
-sed -i 's/%H/%I/g' ~/.config/awesome/conky-awesome/conky-shortcuts.conf
+sed -i 's/%H/%I/g' "$HOME/.config/awesome/conky-awesome/scripts/defaults.txt"
+   sed -i 's/%H/%I/g' "$HOME/.config/awesome/conky-awesome/conky-clock.conf"
+   sed -i 's/%H/%I/g' "$HOME/.config/awesome/conky-awesome/conky-clock-date.conf"
+   sed -i 's/%H/%I/g' "$HOME/.config/awesome/conky-awesome/conky-full.conf"
+   sed -i 's/%H/%I/g' "$HOME/.config/awesome/conky-awesome/conky-shortcuts.conf"
 notify-send "Conky Time Format Changed To 12H"
   else
-sed -i 's/%I/%H/g' ~/.config/awesome/conky-awesome/conky-clock.conf
-sed -i 's/%I/%H/g' ~/.config/awesome/conky-awesome/conky-clock-date.conf
-sed -i 's/%I/%H/g' ~/.config/awesome/conky-awesome/conky-full.conf
-sed -i 's/%I/%H/g' ~/.config/awesome/conky-awesome/conky-shortcuts.conf
+sed -i 's/%I/%H/g' "$HOME/.config/awesome/conky-awesome/scripts/defaults.txt"  
+   sed -i 's/%I/%H/g' "$HOME/.config/awesome/conky-awesome/conky-clock.conf"   
+   sed -i 's/%I/%H/g' "$HOME/.config/awesome/conky-awesome/conky-clock-date.conf"
+   sed -i 's/%I/%H/g' "$HOME/.config/awesome/conky-awesome/conky-full.conf"
+   sed -i 's/%I/%H/g' "$HOME/.config/awesome/conky-awesome/conky-shortcuts.conf"
 notify-send "Conky Time Format Changed To 24H"
 fi
 

@@ -3,7 +3,7 @@
 # Made by sleekmason 07-31-2024
 set -e
 ## "--color" can be removed if wanting to use a separate color chooser.
-CHOICE=( $(yad --color --init-color=#C4C4C4 \
+CHOICE=( $(yad --color --init-color=#c4c4c4 \
 --gtk-palette --palette=/usr/share/X11/rgb.txt \
 --form --width=320 --center --borders=6 --on-top \
 --title="Custom Conky Text Color " \
@@ -27,7 +27,8 @@ else
 fi
 
 ## Grab the old color for variable use.
-OLD_COLOR=$(sed '/default_color/!d' "$HOME/.config/awesome/conky-awesome/conky-shortcuts.conf" | cut -d'#' -f2 | sed 's/..$//')
+#OLD_COLOR=$(sed '/default_color/!d' "$HOME/.config/awesome/conky-awesome/conky-shortcuts.conf" | cut -d'#' -f2 | sed 's/..$//')
+OLD_COLOR=$(sed '/default_color/!d' "$HOME/.config/awesome/conky-awesome/scripts/defaults.txt" | cut -d'#' -f2 | sed 's/..$//')
 
 ## Show numbers if in terminal.
 echo "#$NEW_COLOR" >> "/tmp/custom_conky-awesome_color.txt"
@@ -40,5 +41,6 @@ echo "#$NEW_COLOR" >> "/tmp/custom_conky-awesome_color.txt"
     echo "   -------------------------------"
 
 ## Make the change.
+sed -i -e "s/${OLD_COLOR}/${NEW_COLOR}/g" "$HOME/.config/awesome/conky-awesome/scripts/defaults.txt"
 sed -i -e "s/${OLD_COLOR}/${NEW_COLOR}/g" "$HOME"/.config/awesome/conky-awesome/*.conf
 fi
