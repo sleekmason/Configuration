@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Conky Chooser
-Exec=conky-toggle
+Name=Theme Chooser
+Exec=ld-themes
 StartupNotify=false
 Terminal=false
-Icon=utilities-system-monitor
+Icon=applications-graphics
 Categories=ld-misc-tools;
