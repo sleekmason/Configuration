@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-
- Lilidog-Ozark
+ Lilidog-drow
  by sleekmason <sleekmason@gmail.com> 
-
 -->
-<style-scheme id="lilidog-ozark" _name="lilidog-ozark" version="1.0">
+<style-scheme id="lilidog-drow" _name="lilidog-drow" version="1.0">
   <author>GtkSourceView team</author>
-  <_description>lilidog-ozark color scheme based off of classic</_description>
+  <_description>Lilidog color scheme based off of classic</_description>
 
   <!-- Palette -->
   <color name="white"      value="#FFFFFF"/>
-  <color name="blue"       value="#0000FF"/>
+  <color name="blue"       value="#407BE3"/>
   <color name="magenta"    value="#FA6EAF"/>
   <color name="violet"     value="#8C7FEB"/>
   <color name="cyan"       value="#53C8CC"/>
@@ -23,14 +21,14 @@
   <color name="purple"     value="#994AF0"/>
 
   <!-- Global Settings -->
-  <style name="text"                        foreground="#EBEAE8" background="#282D33"/>
-  <style name="selection"                   foreground="#E1F1F7" background="#2F5D73"/>
-  <style name="current-line"                background="#3F4952"/>
-  <style name="current-line-number"         background="#2D3136"/>
+  <style name="text"                        foreground="#E3E3E3" background="#2D2D2D"/>
+  <style name="selection"                   foreground="#F0F0F0" background="#27598A"/>
+  <style name="current-line"                background="#3D3D3D"/>
+  <style name="current-line-number"         background="#3D3D3D"/>
   <style name="draw-spaces"                 foreground="#babdb6"/>
   <style name="background-pattern"          background="#f3f3f3"/>
-  <style name="line-numbers"                foreground="#CCCCCC" background="#2D3136"/>
-
+  <style name="line-numbers"                foreground="#B8B8B8" background="#262626"/>
+  <style name="background-pattern"          background="#7D4A82"/>
   <!-- Bracket Matching -->
   <style name="bracket-match"               foreground="white" background="gray"/>
   <style name="bracket-mismatch"            foreground="white" background="red"/>
