@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-scale '/home/wallpaper/Glade.png' 
+feh --bg-scale "/usr/share/backgrounds/wallpapers/Fane.jpg" 
