@@ -1,0 +1,135 @@
+#!/bin/bash
+# Change various layout conditions of awesome wm
+
+# Change from square to rounded corners.  Adjust the numbers as desired. 
+ROUNDEDWIN(){
+  FILE="$HOME/.config/awesome/rc.lua"
+  if grep -q "        gears.shape.rounded_rect(cr, w, h, 0)" "$FILE"; then
+     sed -i 's/^        gears.shape.rounded_rect.*/        gears.shape.rounded_rect(cr, w, h, 10)/g' "$FILE"
+   else
+     sed -i 's/^        gears.shape.rounded_rect.*/        gears.shape.rounded_rect(cr, w, h, 0)/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+# Change from square to rounded corners.  Adjust the numbers as desired. 
+ROUNDEDBAR(){
+  FILE="$HOME/.config/awesome/rc.lua"
+  if grep -q "squared_bar" "$FILE"; then
+     sed -i 's/^			gears.shape.rounded_rect.*/			gears.shape.rounded_rect(cr, w, h, 10)/g' "$FILE"
+     sed -i 's/^        shape        = gears.shape.squared_bar,/        shape        = gears.shape.rounded_bar,/g' "$FILE"
+   else
+     sed -i 's/^			gears.shape.rounded_rect.*/			gears.shape.rounded_rect(cr, w, h, 0)/g' "$FILE"
+     sed -i 's/^        shape        = gears.shape.rounded_bar,/        shape        = gears.shape.squared_bar,/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+TASKICONS(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -qe "--theme.tasklist_disable_icon" "$FILE"; then
+     sed -i 's/^--theme.tasklist_disable_icon       = "true"/theme.tasklist_disable_icon       = "true"/g' "$FILE"
+   else
+     sed -i 's/^theme.tasklist_disable_icon       = "true"/--theme.tasklist_disable_icon       = "true"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+TITLEBARS(){
+  FILE="$HOME/.config/awesome/rc.lua"
+  if grep -q "titlebars_enabled = true" "$FILE"; then
+     sed -i 's/^      }, properties = { titlebars_enabled = true }/      }, properties = { titlebars_enabled = false }/g' "$FILE"
+   else
+     sed -i 's/^      }, properties = { titlebars_enabled = false }/      }, properties = { titlebars_enabled = true }/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+LIGHT(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-light.svg"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+OZARK(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-ozark.svg"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+GREEN(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-green.svg"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+CIRCLE(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-circle.svg"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+OBSIDIAN(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-obsidian.png"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+PAPIRUS(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-papirus.svg"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+TELEDOG(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+  if grep -q "theme.awesome_icon" "$FILE"; then
+     sed -i 's/^theme.awesome_icon.*/theme.awesome_icon = "~\/.config\/awesome\/icons\/menu-teledog.png"/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+export -f ROUNDEDWIN
+export -f ROUNDEDBAR
+export -f TITLEBARS
+export -f TASKICONS
+export -f LIGHT
+export -f OZARK
+export -f GREEN
+export -f CIRCLE
+export -f OBSIDIAN
+export -f PAPIRUS
+export -f TELEDOG
+
+yad --title "Awesome Toggles" --escape-ok --borders=12 \
+--width=220 --height=635 --center --escape-ok --undecorated --skip-taskbar \
+--text-align=center \
+--window-icon=applications-other \
+    --form --columns=1 \
+    --field="Awesome Options":LBL "" \
+    --field="Rounded Windows":FBTN "bash -c ROUNDEDWIN >/dev/null 2>&1 &" \
+    --field="Rounded Topbar":FBTN "bash -c ROUNDEDBAR >/dev/null 2>&1 &" \
+    --field="Tasklist Icons":FBTN "bash -c TASKICONS >/dev/null 2>&1 &" \
+    --field="Titlebars":FBTN "bash -c ~/.config/awesome/scripts/titlebar-themes >/dev/null 2>&1 &" \
+    --field="Menu Icons":LBL "" \
+    --field="Light":FBTN "bash -c LIGHT >/dev/null 2>&1 &" \
+    --field="Ozark":FBTN "bash -c OZARK >/dev/null 2>&1 &" \
+    --field="Green":FBTN "bash -c GREEN >/dev/null 2>&1 &" \
+    --field="Circle":FBTN "bash -c CIRCLE >/dev/null 2>&1 &" \
+    --field="Obsidian":FBTN "bash -c OBSIDIAN >/dev/null 2>&1 &" \
+    --field="Papirus":FBTN "bash -c PAPIRUS >/dev/null 2>&1 &" \
+    --field="Teledog":FBTN "bash -c TELEDOG >/dev/null 2>&1 &" \
+    --field="System Options":LBL "" \
+    --field="      System Options!preferences-other":FBTN "bash -c ~/.config/awesome/scripts/awesome-theme-options >/dev/null 2>&1 &"

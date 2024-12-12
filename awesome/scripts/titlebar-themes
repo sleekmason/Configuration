@@ -1,0 +1,111 @@
+#!/bin/bash
+# Adjust tint2 icons
+# Author - sleekmason 07/04/2024
+
+awe-default(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+sed -i 's/^icondir = icondir.*/icondir = icondir .. "default\/"/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+awe-lilidog(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+sed -i 's/^icondir = icondir.*/icondir = icondir .. "lilidog\/"/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+awe-lilidog2(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+sed -i 's/^icondir = icondir.*/icondir = icondir .. "lilidog2\/"/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+awe-clone(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+sed -i 's/^icondir = icondir.*/icondir = icondir .. "clone\/"/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+awe-papirus(){
+  FILE="$HOME/.config/awesome/themes/default/theme.lua"
+sed -i 's/^icondir = icondir.*/icondir = icondir .. "papirus\/"/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+
+## Position
+awe-top(){
+  FILE="$HOME/.config/awesome/rc.lua"
+sed -i 's/^awful.titlebar.*/awful.titlebar(c, { size = 24, position = "top" }) : setup {/g' "$FILE"
+sed -i 's/layout   = wibox.layout.fixed.*/layout   = wibox.layout.fixed.horizontal/g' "$FILE"
+sed -i 's/layout   = wibox.layout.flex.*/layout   = wibox.layout.flex.horizontal/g' "$FILE"
+sed -i 's/direction   =.*/direction   = "north",/g' "$FILE"
+sed -i 's/layout   = wibox.layout.align.*/layout   = wibox.layout.align.horizontal/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+
+awe-right(){
+  FILE="$HOME/.config/awesome/rc.lua"
+sed -i 's/^awful.titlebar.*/awful.titlebar(c, { size = 24, position = "right" }) : setup {/g' "$FILE"
+sed -i 's/layout   = wibox.layout.fixed.*/layout   = wibox.layout.fixed.vertical/g' "$FILE"
+sed -i 's/layout   = wibox.layout.flex.*/layout   = wibox.layout.flex.vertical/g' "$FILE"
+sed -i 's/direction   =.*/direction   = "west",/g' "$FILE"
+sed -i 's/layout   = wibox.layout.align.*/layout   = wibox.layout.align.vertical/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+
+awe-left(){
+  FILE="$HOME/.config/awesome/rc.lua"
+sed -i 's/^awful.titlebar.*/awful.titlebar(c, { size = 24, position = "left" }) : setup {/g' "$FILE"
+sed -i 's/layout   = wibox.layout.fixed.*/layout   = wibox.layout.fixed.vertical/g' "$FILE"
+sed -i 's/layout   = wibox.layout.flex.*/layout   = wibox.layout.flex.vertical/g' "$FILE"
+sed -i 's/direction   =.*/direction   = "east",/g' "$FILE"
+sed -i 's/layout   = wibox.layout.align.*/layout   = wibox.layout.align.vertical/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+
+awe-bottom(){
+  FILE="$HOME/.config/awesome/rc.lua"
+sed -i 's/^awful.titlebar.*/awful.titlebar(c, { size = 24, position = "bottom" }) : setup {/g' "$FILE"
+sed -i 's/layout   = wibox.layout.fixed.*/layout   = wibox.layout.fixed.horizontal/g' "$FILE"
+sed -i 's/layout   = wibox.layout.flex.*/layout   = wibox.layout.flex.horizontal/g' "$FILE"
+sed -i 's/direction   =.*/direction   = "north",/g' "$FILE"
+sed -i 's/layout   = wibox.layout.align.*/layout   = wibox.layout.align.horizontal/g' "$FILE"
+     echo 'awesome.restart()' | awesome-client
+}
+
+titlebars-on-off(){
+  FILE="$HOME/.config/awesome/rc.lua"
+  if grep -q "titlebars_enabled = true" "$FILE"; then
+     sed -i 's/^      }, properties = { titlebars_enabled = true }/      }, properties = { titlebars_enabled = false }/g' "$FILE"
+   else
+     sed -i 's/^      }, properties = { titlebars_enabled = false }/      }, properties = { titlebars_enabled = true }/g' "$FILE"
+    fi
+echo 'awesome.restart()' | awesome-client
+}
+
+export -f awe-default
+export -f awe-lilidog
+export -f awe-lilidog2
+export -f awe-papirus
+export -f awe-clone
+export -f awe-top
+export -f awe-right
+export -f awe-left
+export -f awe-bottom
+export -f titlebars-on-off
+
+yad --title "Titlebar Options" --escape-ok --borders=14 \
+--form --geometry=240x573-270-352 \
+--text="Titlebar Options" --text-align=center --buttons-layout=edge \
+--window-icon=org.xfce.settings.color \
+    --form --columns=1 \
+    --field="":LBL "" \
+    --field="Titlebars On/Off":FBTN "bash -c titlebars-on-off >/dev/null 2>&1 &" \
+    --field="":LBL "" \
+    --field="Icon Theme":LBL "" \
+    --field=" Default":FBTN "bash -c awe-default >/dev/null 2>&1 &" \
+    --field=" Lilidog":FBTN "bash -c awe-lilidog >/dev/null 2>&1 &" \
+    --field=" Lilidog2":FBTN "bash -c awe-lilidog2 >/dev/null 2>&1 &" \
+    --field=" Papirus":FBTN "bash -c awe-papirus >/dev/null 2>&1 &" \
+    --field=" Clone":FBTN "bash -c awe-clone >/dev/null 2>&1 &" \
+    --field="Placement":LBL "" \
+    --field=" Top":FBTN "bash -c awe-top >/dev/null 2>&1 &" \
+    --field=" Right":FBTN "bash -c awe-right >/dev/null 2>&1 &" \
+    --field=" Bottom":FBTN "bash -c awe-bottom >/dev/null 2>&1 &" \
+    --field=" Left":FBTN "bash -c awe-left >/dev/null 2>&1 &"

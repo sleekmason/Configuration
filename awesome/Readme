@@ -1,0 +1,57 @@
+Readme for the awesome window manager in Lilidog/Beardog
+
+Awesome in Lilidog is designed with a minimal amount of changes in
+order to introduce new users to awesome, and provide a framework 
+from which to expand and/or learn about awesome further. This 
+being said, the current configuration should provide a fairly 
+complete experience, and should be usable from the start.
+
+AUTOSTART.SH
+The autostart.sh file starts different programs from the 
+~/.config/awesome folder.  It is here that you can add startup 
+items as you would in any autostart file. Simply duplicate the
+other lines to add your owm.
+
+THEMES
+The current theme is a modified default theme that is located
+in ~/.config/awesome/themes.  This is where changes to the 
+existing theme should be made. Numerous options are available.
+Otherwise, to change the theme to one of the other awesome 
+themes, see on or about line 60 in the ~/.config/awesome/rc.lua. 
+Themes can be changed to: default, gtk, sky, xresources, zenburn.
+
+WALLPAPERS
+If the theme is to handle the wallpapers, you must comment out 
+~/.fehbg in the autostart file.
+
+WIDGITS
+Wigits are the diferent items found in the topbar  These can 
+be commented or uncommented starting on line 376.  Some 
+adjustmet may be necessary for the weather and wifi.
+
+KEYBINDS
+User keybinds can be found starting on line 407 of the rc.lua
+Two of the default awesome keybinds have been changed.
+'Super + f' for 'fullscreen', changed to 'Super + Shift + f'
+'Super + x' for 'run lua code' changed to 'Super + Shift + x'
+
+Some of the basic user keybinds are added for your convenience.
+
+"Print"                xfce4-screenshooter
+modkey    "Return"     terminal
+modkey    "b"          browser - Change defaults with "galternatives"
+modkey    "f"          thunar 
+modkey    "e"          geany
+modkey    "p"          pragha
+modkey    "x"          ld-logout
+modkey    "z"          hotcorners
+modkey    "v"          wallpaper
+modkey    "F1"         jgmenu_run
+modkey    "F3"         rofi -show drun
+modkey    "F5"         dmenu
+modkey    "F6"         toggle options
+MODKEY    "c"          conky   , if installed.  In a terminal,
+use 'conky-awesome-installer' to install conky for awesome.  
+This will install conky for openbox as well if in Beardog.
+
+See the awesome menu entry for 'hotkeys' for the rest.

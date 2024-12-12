@@ -1,0 +1,33 @@
+i3wm in Lilidog is designed with a minimal amount of changes in
+order to introduce new users to i3, and to provide a framework 
+from which to expand and/or learn more about i3. This said, 
+the current configuration should provide a fairly complete 
+experience.
+
+AUTOSTART PROGRAMS
+Autostarting applications in i3 is done directly through the 
+~/.config/i3/config file on or about line 35.
+
+KEYBINDS
+One of the default i3 keybinds has been changed.
+'Super + e' for 'toggle split', changed to 'Super + t'
+
+STATUSBAR
+The statusbar is i3blocks, found in ~/.config/i3/i3blocks.conf.
+Here, you can change items to your liking.
+
+Some basic user keybinds are added for your convenience.
+
+"Print"                xfce4-screenshooter
+modkey    "Return"     terminal
+modkey    "b"          browser - Change preferences with "galternatives"
+modkey    "v"          wallpaper
+modkey    "p"          pragha
+modkey    "f"          thunar 
+modkey    "e"          geany
+modkey    "x"          ld-logout
+modkey    "z"          hotcorners
+modkey    "F1"         jgmenu_run
+modkey    "F3"         rofi -show drun
+modkey    "F5"         dmenu
+

@@ -8,7 +8,8 @@
 <StartupCommand>killall pnmixer ; pnmixer</StartupCommand>
 <StartupCommand>xfce4-power-manager</StartupCommand>
 <StartupCommand>xfsettingsd --daemon</StartupCommand>
-<!-- <StartupCommand>picom --daemon</StartupCommand> -->
+<!-- <StartupCommand>picom</StartupCommand> -->
+<!-- <StartupCommand>"$HOME/.config/conky/scripts/conky-restart-list" >/dev/null</StartupCommand> -->
 
 <!-- **********  ROOT MENU **********  -->
    <!-- The root menu, if this is undefined you will not get a menu. -->
@@ -115,7 +116,7 @@
     </Group>
 
     <!-- Tray at the bottom. -->
-    <Tray x="0" y="-1" height="24" autohide="off">
+    <Tray x="0" y="0" height="24" autohide="off">
 
 		<Spacer width="2"/>
 		<TrayButton icon="/usr/share/icons/ld-icons/coltint2light/menu.svg">exec:~/.config/rofi/scripts/rofi-familiar</TrayButton>
@@ -126,13 +127,14 @@
 		<Spacer width="10"/>
         <Pager labeled="true"/>
         <Spacer width="10"/>
-
         <TaskList maxwidth="211"/>
-
-                <Dock/>
-        <Spacer width="8"/>
+        <Spacer width="10"/>
+        <Dock/>
+        <Spacer width="7"/>
         <Clock format="%d %b %H:%M"><Button mask="123">exec:urxvt -e man strftime</Button></Clock>
-		<Spacer width="8"/>		
+		<Spacer width="8"/>
+		<TrayButton icon="/usr/share/icons/ld-icons/coltint2light/upgrade.svg">exec:popup -f /usr/share/lilidog/tint2/update-options</TrayButton>
+        <Spacer width="2"/>	
 		<TrayButton icon="/usr/share/icons/ld-icons/coltint2light/exit.svg">exec:ld-logout</TrayButton>
 		<Spacer width="2"/>
     </Tray>
@@ -143,13 +145,13 @@
         <Width>4</Width>
         <Height>21</Height>
         <Corner>12</Corner>
-        <Foreground>#B0B5B8</Foreground>
-        <Background>#343B42</Background>
+        <Foreground>#989C9E</Foreground>
+        <Background>#1C2024</Background>
         <Outline>#000000</Outline>
         <Opacity>1.0</Opacity>
         <Active>
             <Foreground>#E0E0DC</Foreground>
-            <Background>#2B3138</Background>
+            <Background>#323940</Background>
             <Outline>#000000</Outline>
             <Opacity>1.0</Opacity>
         </Active>

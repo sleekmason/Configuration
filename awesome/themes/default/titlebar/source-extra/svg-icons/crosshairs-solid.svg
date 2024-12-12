@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg36"
+   sodipodi:docname="crosshairs-solid.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs40" />
+  <sodipodi:namedview
+     id="namedview38"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.6523438"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="1918"
+     inkscape:window-height="1028"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg36" />
+  <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+  <path
+     d="m 256,64 c 13.275,0 24,10.725 24,24 v 7.8 c 70.275,10.425 125.775,66 136.2,136.2 h 7.8 c 13.275,0 24,10.725 24,24 0,13.275 -10.725,24 -24,24 h -7.8 c -10.425,70.275 -66,125.775 -136.2,136.2 v 7.8 c 0,13.275 -10.725,24 -24,24 -13.275,0 -24,-10.725 -24,-24 v -7.8 C 161.725,405.775 106.225,350.275 95.8,280 H 88 c -13.275,0 -24,-10.725 -24,-24 0,-13.275 10.725,-24 24,-24 h 7.8 C 106.225,161.725 161.725,106.225 232,95.8 V 88 c 0,-13.275 10.725,-24 24,-24 z M 144.55,280 c 9.375,43.725 43.8,78.075 87.45,87.45 V 352 c 0,-13.275 10.725,-24 24,-24 13.275,0 24,10.725 24,24 v 15.45 c 43.725,-9.375 78.075,-43.8 87.45,-87.45 H 352 c -13.275,0 -24,-10.725 -24,-24 0,-13.275 10.725,-24 24,-24 h 15.45 C 358.075,188.275 323.725,153.925 280,144.55 V 160 c 0,13.275 -10.725,24 -24,24 -13.275,0 -24,-10.725 -24,-24 v -15.45 c -43.725,9.375 -78.075,43.725 -87.45,87.45 H 160 c 13.275,0 24,10.725 24,24 0,13.275 -10.725,24 -24,24 z M 256,232 a 24,24 0 1 1 0,48 24,24 0 1 1 0,-48 z"
+     id="path34"
+     style="fill:#e6e6e6;stroke-width:0.75" />
+</svg>
