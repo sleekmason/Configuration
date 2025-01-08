@@ -1,0 +1,198 @@
+[2025:01:05:12:15:02:551393 WARNING] Failed to find pie configuration file "pies.conf"! (This should only happen when Gnome-Pie is started for the first time...)
+[2025:01:05:12:15:02:551478 WARNING] Failed to find settings file "gnome-pie.conf"! (This should only happen when Gnome-Pie is started for the first time...)
+[2025:01:05:12:15:02:552190 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:05:12:15:02:552522 MESSAGE] Creating new configuration file in "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:12:15:02:579397 WARNING] Failed to look up menu_file for "applications.menu"
+[2025:01:05:12:15:02:581172 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:12:15:02:801852 WARNING] Error loading settings: gnome-pie.conf not found! Using defaults...
+[2025:01:05:12:15:02:806436 WARNING] No theme specified! Using default...
+[2025:01:05:12:15:02:821517 MESSAGE] Started happily...
+[2025:01:05:12:15:08:790136 MESSAGE] Devices changed...
+[2025:01:05:12:15:11:923581 MESSAGE] Devices changed...
+[2025:01:05:12:15:12:654688 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:12:15:42:618878 MESSAGE] Devices changed...
+[2025:01:05:12:15:46:204946 MESSAGE] Devices changed...
+[2025:01:05:12:28:02:420576 MESSAGE] Devices changed...
+[2025:01:05:12:28:19:685209 MESSAGE] Devices changed...
+[2025:01:05:12:30:51:438112 MESSAGE] Devices changed...
+[2025:01:05:12:31:08:783088 MESSAGE] Devices changed...
+[2025:01:05:12:36:19:060660 MESSAGE] Devices changed...
+[2025:01:05:12:36:53:841086 MESSAGE] Devices changed...
+[2025:01:05:12:37:30:356855 MESSAGE] Devices changed...
+[2025:01:05:12:38:54:754132 MESSAGE] Devices changed...
+[2025:01:05:12:38:57:493246 MESSAGE] Devices changed...
+[2025:01:05:12:44:31:031470 MESSAGE] Devices changed...
+[2025:01:05:12:44:32:348534 MESSAGE] Devices changed...
+[2025:01:05:12:44:52:056360 MESSAGE] Devices changed...
+[2025:01:05:12:44:55:412865 MESSAGE] Devices changed...
+[2025:01:05:12:45:50:809448 MESSAGE] Devices changed...
+[2025:01:05:12:47:37:845002 MESSAGE] Devices changed...
+[2025:01:05:12:49:04:201123 MESSAGE] Devices changed...
+[2025:01:05:14:53:27:908493 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:05:14:53:27:909455 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:14:53:27:919870 WARNING] Failed to look up menu_file for "applications.menu"
+[2025:01:05:14:53:28:232735 MESSAGE] Started happily...
+[2025:01:05:14:57:13:190604 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:01:05:380308 MESSAGE] Caught signal (15), bye!
+[2025:01:05:15:01:37:083508 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:05:15:01:37:084292 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:01:37:108497 WARNING] Failed to look up menu_file for "applications.menu"
+[2025:01:05:15:01:37:509706 MESSAGE] Started happily...
+[2025:01:05:15:23:36:000489 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:29:27:971301 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:29:46:512488 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:05:15:29:46:513112 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:29:46:545353 WARNING] Failed to look up menu_file for "applications.menu"
+[2025:01:05:15:29:47:010000 MESSAGE] Started happily...
+[2025:01:05:15:44:36:980718 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:45:40:807858 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:46:04:331121 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:15:48:51:533316 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:19:42:07:017275 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:19:42:22:095625 MESSAGE] Error loading image file: Failed to open file “/home/sleekmason/.config/gnome-pie/scalable/cs-themes.svg”: No such file or directory
+[2025:01:05:19:44:54:038510 MESSAGE] Error loading image file: Failed to open file “/home/sleekmason/.config/gnome-pie/scalable/cs-themes.svg”: No such file or directory
+[2025:01:05:19:44:57:257496 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:19:45:00:960729 MESSAGE] Error loading image file: Failed to open file “/home/sleekmason/.config/gnome-pie/scalable/cs-themes.svg”: No such file or directory
+[2025:01:05:19:45:07:395247 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:05:19:45:13:903121 MESSAGE] Error loading image file: Failed to open file “/home/sleekmason/.config/gnome-pie/scalable/cs-themes.svg”: No such file or directory
+[2025:01:05:20:50:44:077597 MESSAGE] Error loading image file: Failed to open file “/home/sleekmason/.config/gnome-pie/scalable/cs-themes.svg”: No such file or directory
+[2025:01:06:08:00:20:066125 WARNING] Failed to open file “/home/sleekmason/.config/gnome-pie/scalable/cs-themes.svg”: No such file or directory
+[2025:01:06:08:11:33:078614 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:25:18:101920 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:25:48:742159 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:28:49:844295 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:29:07:706181 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:29:36:854294 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:41:11:704778 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:42:31:656491 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:42:55:852561 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:06:08:42:55:852956 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:08:42:56:131288 MESSAGE] Started happily...
+[2025:01:06:08:43:06:097283 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:02:21:006042 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:02:44:316824 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:06:59:863442 WARNING] Error when getting information for file “/home/sleekmason/.config/gnome-pie/themes/lilidog-gloss”: No such file or directory
+[2025:01:06:09:07:07:333408 WARNING] Error when getting information for file “/home/sleekmason/.config/gnome-pie/themes/lilidog-gloss”: No such file or directory
+[2025:01:06:09:08:20:676210 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:08:39:985101 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:13:34:939912 WARNING] Error opening directory “/home/sleekmason/.config/gnome-pie/themes/lilidog-gloss”: No such file or directory
+[2025:01:06:09:13:34:962364 WARNING] No theme specified! Using default...
+[2025:01:06:09:14:51:394473 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:16:25:961972 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:16:41:736777 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:16:51:050645 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:06:09:16:51:051303 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:16:51:329542 MESSAGE] Started happily...
+[2025:01:06:09:17:37:219068 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:06:09:55:27:369021 MESSAGE] Saving Pies to "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:07:09:38:01:578239 MESSAGE] Devices changed...
+[2025:01:07:09:38:21:044170 MESSAGE] Devices changed...
+[2025:01:07:09:56:42:681115 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:07:09:56:42:682160 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:07:09:56:43:019889 MESSAGE] Started happily...
+[2025:01:07:09:56:45:809829 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/geany.svg”: No such file or directory
+[2025:01:07:09:56:45:810148 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/geany.svg”: No such file or directory
+[2025:01:07:09:56:45:815586 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/thunar.svg”: No such file or directory
+[2025:01:07:09:56:45:815933 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/thunar.svg”: No such file or directory
+[2025:01:07:09:56:45:817246 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-terminal_su.svg”: No such file or directory
+[2025:01:07:09:56:45:817684 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-terminal_su.svg”: No such file or directory
+[2025:01:07:09:56:45:819731 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/libreoffice-writer.svg”: No such file or directory
+[2025:01:07:09:56:45:820154 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/libreoffice-writer.svg”: No such file or directory
+[2025:01:07:09:56:45:821646 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/transmission.svg”: No such file or directory
+[2025:01:07:09:56:45:822005 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/transmission.svg”: No such file or directory
+[2025:01:07:09:56:45:823614 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/multimedia-photo-viewer.svg”: No such file or directory
+[2025:01:07:09:56:45:824022 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/multimedia-photo-viewer.svg”: No such file or directory
+[2025:01:07:09:56:45:827871 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/firefox.svg”: No such file or directory
+[2025:01:07:09:56:45:828295 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/firefox.svg”: No such file or directory
+[2025:01:07:09:56:45:829810 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/thunderbird.svg”: No such file or directory
+[2025:01:07:09:56:45:830185 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/thunderbird.svg”: No such file or directory
+[2025:01:07:09:56:50:568221 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/luckyBackup.svg”: No such file or directory
+[2025:01:07:09:56:50:568648 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/luckyBackup.svg”: No such file or directory
+[2025:01:07:09:56:50:569678 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/galculator.svg”: No such file or directory
+[2025:01:07:09:56:50:570155 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/galculator.svg”: No such file or directory
+[2025:01:07:09:56:50:571120 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gammy.svg”: No such file or directory
+[2025:01:07:09:56:50:571459 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gammy.svg”: No such file or directory
+[2025:01:07:09:56:50:572267 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/info.febvre.Komikku.svg”: No such file or directory
+[2025:01:07:09:56:50:572600 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/info.febvre.Komikku.svg”: No such file or directory
+[2025:01:07:09:56:50:573999 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/taskbar.svg”: No such file or directory
+[2025:01:07:09:56:50:574492 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/taskbar.svg”: No such file or directory
+[2025:01:07:09:56:50:575903 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/usbimager.png”: No such file or directory
+[2025:01:07:09:56:50:576373 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/usbimager.png”: No such file or directory
+[2025:01:07:09:56:50:577694 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/htop.svg”: No such file or directory
+[2025:01:07:09:56:50:578058 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/htop.svg”: No such file or directory
+[2025:01:07:09:56:50:579491 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/lightsoff.svg”: No such file or directory
+[2025:01:07:09:56:50:579884 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/lightsoff.svg”: No such file or directory
+[2025:01:07:09:56:50:581249 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/synaptic.svg”: No such file or directory
+[2025:01:07:09:56:50:581572 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/synaptic.svg”: No such file or directory
+[2025:01:07:09:56:50:582941 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gparted.svg”: No such file or directory
+[2025:01:07:09:56:50:583284 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gparted.svg”: No such file or directory
+[2025:01:07:09:56:50:584390 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/org.xfce.settings.color.svg”: No such file or directory
+[2025:01:07:09:56:50:584688 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/org.xfce.settings.color.svg”: No such file or directory
+[2025:01:07:09:57:57:619741 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-system-brightness-lock.svg”: No such file or directory
+[2025:01:07:09:57:57:620108 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-system-brightness-lock.svg”: No such file or directory
+[2025:01:07:09:57:57:620779 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop.svg”: No such file or directory
+[2025:01:07:09:57:57:620902 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop.svg”: No such file or directory
+[2025:01:07:09:57:57:621277 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gnome-pie.svg”: No such file or directory
+[2025:01:07:09:57:57:621400 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gnome-pie.svg”: No such file or directory
+[2025:01:07:09:57:57:621778 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-tweak-tool.svg”: No such file or directory
+[2025:01:07:09:57:57:621892 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-tweak-tool.svg”: No such file or directory
+[2025:01:07:09:57:57:622168 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/video-display.svg”: No such file or directory
+[2025:01:07:09:57:57:622288 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/video-display.svg”: No such file or directory
+[2025:01:07:09:57:57:622622 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/grub-customizer.svg”: No such file or directory
+[2025:01:07:09:57:57:622734 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/grub-customizer.svg”: No such file or directory
+[2025:01:07:09:57:57:623047 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/conky.svg”: No such file or directory
+[2025:01:07:09:57:57:623163 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/conky.svg”: No such file or directory
+[2025:01:07:09:57:57:623561 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/cs-panel.svg”: No such file or directory
+[2025:01:07:09:57:57:623727 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/cs-panel.svg”: No such file or directory
+[2025:01:07:09:57:57:624119 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop-default-applications.svg”: No such file or directory
+[2025:01:07:09:57:57:624244 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop-default-applications.svg”: No such file or directory
+[2025:01:07:09:58:13:730747 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:07:09:58:13:731365 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:07:09:58:14:030191 MESSAGE] Started happily...
+[2025:01:07:09:58:16:014108 MESSAGE] Error loading image file: Failed to open file “~/.config/gnome-pie/icons/org.xfce.settings.color.svg”: No such file or directory
+[2025:01:07:09:58:16:014507 MESSAGE] Error loading image file: Failed to open file “~/.config/gnome-pie/icons/org.xfce.settings.color.svg”: No such file or directory
+[2025:01:07:09:58:16:021001 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-system-brightness-lock.svg”: No such file or directory
+[2025:01:07:09:58:16:021387 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-system-brightness-lock.svg”: No such file or directory
+[2025:01:07:09:58:16:023088 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop.svg”: No such file or directory
+[2025:01:07:09:58:16:023436 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop.svg”: No such file or directory
+[2025:01:07:09:58:16:025071 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gnome-pie.svg”: No such file or directory
+[2025:01:07:09:58:16:025397 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gnome-pie.svg”: No such file or directory
+[2025:01:07:09:58:16:026948 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-tweak-tool.svg”: No such file or directory
+[2025:01:07:09:58:16:027278 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-tweak-tool.svg”: No such file or directory
+[2025:01:07:09:58:16:028574 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/video-display.svg”: No such file or directory
+[2025:01:07:09:58:16:028892 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/video-display.svg”: No such file or directory
+[2025:01:07:09:58:16:030492 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/grub-customizer.svg”: No such file or directory
+[2025:01:07:09:58:16:030813 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/grub-customizer.svg”: No such file or directory
+[2025:01:07:09:58:16:032029 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/conky.svg”: No such file or directory
+[2025:01:07:09:58:16:032346 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/conky.svg”: No such file or directory
+[2025:01:07:09:58:16:033546 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/cs-panel.svg”: No such file or directory
+[2025:01:07:09:58:16:033905 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/cs-panel.svg”: No such file or directory
+[2025:01:07:09:58:16:035377 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop-default-applications.svg”: No such file or directory
+[2025:01:07:09:58:16:035696 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop-default-applications.svg”: No such file or directory
+[2025:01:07:09:58:41:705561 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:07:09:58:41:706247 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:07:09:58:42:021706 MESSAGE] Started happily...
+[2025:01:07:09:58:43:947358 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-system-brightness-lock.svg”: No such file or directory
+[2025:01:07:09:58:43:947752 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-system-brightness-lock.svg”: No such file or directory
+[2025:01:07:09:58:43:949380 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop.svg”: No such file or directory
+[2025:01:07:09:58:43:949768 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop.svg”: No such file or directory
+[2025:01:07:09:58:43:951452 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gnome-pie.svg”: No such file or directory
+[2025:01:07:09:58:43:951779 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/gnome-pie.svg”: No such file or directory
+[2025:01:07:09:58:43:953225 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-tweak-tool.svg”: No such file or directory
+[2025:01:07:09:58:43:953561 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/utilities-tweak-tool.svg”: No such file or directory
+[2025:01:07:09:58:43:954791 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/video-display.svg”: No such file or directory
+[2025:01:07:09:58:43:955111 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/video-display.svg”: No such file or directory
+[2025:01:07:09:58:43:956633 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/grub-customizer.svg”: No such file or directory
+[2025:01:07:09:58:43:956972 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/grub-customizer.svg”: No such file or directory
+[2025:01:07:09:58:43:958198 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/conky.svg”: No such file or directory
+[2025:01:07:09:58:43:958523 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/conky.svg”: No such file or directory
+[2025:01:07:09:58:43:959685 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/cs-panel.svg”: No such file or directory
+[2025:01:07:09:58:43:960008 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/cs-panel.svg”: No such file or directory
+[2025:01:07:09:58:43:961385 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop-default-applications.svg”: No such file or directory
+[2025:01:07:09:58:43:961731 MESSAGE] Error loading image file: Failed to open file “$HOME/.config/gnome-pie/icons/preferences-desktop-default-applications.svg”: No such file or directory
+[2025:01:07:10:04:19:037046 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:07:10:04:19:037466 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:07:10:04:19:324671 MESSAGE] Started happily...
+[2025:01:07:11:28:24:610842 MESSAGE] Welcome to Gnome-Pie 0.7.3!
+[2025:01:07:11:28:24:611099 MESSAGE] Loading Pies from "/home/sleekmason/.config/gnome-pie/pies.conf".
+[2025:01:07:11:28:24:864044 MESSAGE] Started happily...
