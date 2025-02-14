@@ -1,0 +1,18 @@
+#!/bin/bash
+# Yad dialog for custom theme selection
+yad --title "Custom Themes" --borders=10 \
+--button=" Exit!gtk-delete:0" \
+--geometry=240x420-352-295 \
+--text="Choose Theme To Adjust\n" \
+--text-align=center \
+--window-icon=org.xfce.settings.color \
+--form --columns=1 \
+--field="Custom Arcadia":FBTN "custom-arcadia-chooser" \
+--field="Custom Cove":FBTN "custom-cove-chooser" \
+--field="Custom Drow":FBTN "custom-drow-chooser" \
+--field="Custom Fane":FBTN "custom-fane-chooser" \
+--field="Custom Forge":FBTN "custom-forge-chooser" \
+--field="Custom Ghost":FBTN "custom-ghost-chooser" \
+--field="Custom Ink":FBTN "custom-ink-chooser" \
+--field="Custom Ozark":FBTN "custom-ozark-chooser" \
+--field="Custom Nightshade":FBTN "custom-nightshade-chooser"
