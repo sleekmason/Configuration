@@ -9,11 +9,7 @@
 xfconf-query -c xsettings -p /Net/ThemeName -s "Custom-ink"
 
 ## Change icon theme
-xfconf-query -c xsettings -p /Net/IconThemeName -s "Obsidian-Green"
-
-## gsettings "gtk-theme" and "icons" for use is scripts like neofetch which won't use xfconf-query.
-gsettings set org.gnome.desktop.interface gtk-theme "Custom-ink"
-gsettings set org.gnome.desktop.interface icon-theme "Obsidian-Green"
+xfconf-query -c xsettings -p /Net/IconThemeName -s "Obsidian-Gray"
 
 ## Change openbox theme
 #sed -i "s/$(grep "<theme>" ~/.config/openbox/rc.xml -A 5 | grep "<name>"| awk -F"[><]" '{print $3}')/"Custom-inkbox"/g" ~/.config/openbox/rc.xml
@@ -28,14 +24,17 @@ if test -e ~/.config/jgmenu/backup; then
 rm -fr ~/.config/jgmenu/backup
 fi
 #jgmenu_run gtktheme
-jgmenu_run init --apply-obtheme >/dev/null 2>&1
+jgmenu_run init --apply-obtheme
 
 ## Change xfce4-terminal theme
-xfce4-term-colors ink
+#xfce4-term-colors ink
+xfconf-query -c xfce4-terminal -p /color-background -s "#131316161717"
+xfconf-query -c xfce4-terminal -p /color-foreground -s "#c9c9d6d6d6d6"
+xfconf-query -c xfce4-terminal -p /color-palette -s "rgb(0,0,0);rgb(196,62,47);rgb(0,136,87);rgb(190,149,45);rgb(56,152,183);rgb(150,52,128);rgb(0,142,142);rgb(158,170,176);rgb(153,163,172);rgb(255,95,95);rgb(71,207,133);rgb(226,215,115);rgb(110,195,215);rgb(239,115,219);rgb(99,208,200);rgb(224,231,233)"
 
 ## Change Rofi theme
-sed -i 's/^@theme "familiar.*/@theme "familiar-ink.rasi"/g' "$HOME/.config/rofi/themes/familiar/config.rasi" >/dev/null 2>&1
-sed -i 's/^@theme "rounded.*/@theme "rounded-ink.rasi"/g' "$HOME/.config/rofi/config.rasi" >/dev/null 2>&1
+sed -i 's/^@theme "familiar.*/@theme "familiar-ink.rasi"/g' "$HOME/.config/rofi/themes/familiar/config.rasi"
+sed -i 's/^@theme "rounded.*/@theme "rounded-ink.rasi"/g' "$HOME/.config/rofi/config.rasi"
 
 # These lines are for the light/dark toggle and the custom toggle. Do not remove.
 # Comment these lines in Custom-Theme or Light-Dark-Theme if copying a named theme.

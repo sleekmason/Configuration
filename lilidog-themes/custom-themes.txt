@@ -5,5 +5,5 @@ Custom Fane,       bash -c 'custom-fane-chooser',       org.xfce.settings.color
 Custom Forge,      bash -c 'custom-forge-chooser',      org.xfce.settings.color
 Custom Ghost,      bash -c 'custom-ghost-chooser',      org.xfce.settings.color
 Custom Ink,        bash -c 'custom-ink-chooser',        org.xfce.settings.color
-Custom Ozark,      bash -c 'custom-ozark-chooser',      org.xfce.settings.color
 Custom Nightshade, bash -c 'custom-nightshade-chooser', org.xfce.settings.color
+Custom Ozark,      bash -c 'custom-ozark-chooser',      org.xfce.settings.color
