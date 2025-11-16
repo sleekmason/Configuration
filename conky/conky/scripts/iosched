@@ -1,0 +1,9 @@
+#!/bin/dash
+
+if test -e /sys/block/nvme0n1/queue/scheduler > /dev/null; then
+cat /sys/block/nvme0n1/queue/scheduler | sed -e 's/^.*\[\(.*\)\].*$/\1/'
+elif test -e /sys/block/sda/queue/scheduler > /dev/null; then
+cat /sys/block/sda/queue/scheduler | sed -e 's/^.*\[\(.*\)\].*$/\1/'
+elif test -e /dev/sda/queue/scheduler > /dev/null; then
+cat /dev/sda/queue/scheduler | sed -e 's/^.*\[\(.*\)\].*$/\1/'
+fi

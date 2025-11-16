@@ -26,11 +26,11 @@ cd /tmp || exit &&
 
 # Remove copies from /tmp
 sudo rm -fr "/tmp/themechooser"
-sudo rm -fr "/tmp/themechooser2.zip"
+sudo rm -fr "/tmp/themechooser-trixie.zip"
 
 # Grab the theme files
-wget https://raw.githubusercontent.com/sleekmason/packages/master/themechooser2.zip --show-progress -q
-unzip "/tmp/themechooser2.zip"
+wget https://raw.githubusercontent.com/sleekmason/packages/master/themechooser-trixie.zip --show-progress -q
+unzip "/tmp/themechooser-trixie.zip"
 
 # Backup and copy over /usr/share/themes
 if ! test -e "/usr/share/themes.bak"; then

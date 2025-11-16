@@ -11,16 +11,17 @@ run() {
 run "xfsettingsd"
 run "nm-applet"
 run "pnmixer"
-run "picom"
+run "$HOME/.fehbg"
+#run "picom"
 # Keep from startup in xfce4.
 if ! test -e "/usr/share/xfwm4";then
-run "lxpolkit"
-run "$HOME/.fehbg"
+run "/usr/libexec/polkit-mate-authentication-agent-1"
 fi
 
 ## Start conkys on login if present
 if test -f  "$HOME/.config/awesome/conky-awesome/scripts/conky-restart-list"; then
 	"$HOME/.config/awesome/conky-awesome/scripts/conky-restart-list" >/dev/null 2>&1
+	"conkyrestart" >/dev/null 2>&1
 fi
 
 ## Run awesome-user-autostart.sh for additional user items.

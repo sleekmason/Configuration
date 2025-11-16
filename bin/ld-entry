@@ -21,12 +21,18 @@ while getopts 'iq' OPTION; do
       i)
 	_interactive="yes"
 	echo ""
-	echo -e " [0;32m--------------------------------------------------[0m"
+	echo -e "                   [0;32mWELCOME TO LILIDOG![0m"
 	echo ""
-	echo -e " [0;32m\n Entering interactive script to customize Lilidog.\n[0m"
-	echo -e " [0;33m--------------------------------------------------[0m"
-	echo -e " [0;33m\n Please use letters 'y' or 'n' for selections.\n[0m"
-	echo -e " [0;33m--------------------------------------------------[0m"
+	echo -e " [0;32m--------------------------------------------------------[0m"
+	echo ""
+	echo -e " [0;32mEntering the interactive script for customizing Lilidog.[0m"
+	echo ""
+	echo ""
+	echo -e " [0;33mPlease use the letters 'y' or 'n' for choice selections.\n[0m"
+	echo -e " [0;32mThese items can also be found in the Lilidog Installers,[0m"
+    echo -e " [0;32mso any of these options can be added at a later time.[0m"
+    echo ""
+	echo -e " [0;32m--------------------------------------------------------[0m"
 	echo ""
 	break
       ;;
@@ -81,6 +87,15 @@ _update() {
 	run_it
 }
 
+-apt_location() {
+	  _msg="Update sources style to the new deb822 format?"
+      do_it() { apt modernize-sources -y
+	  apt update ;}
+        see_it
+        no_see
+        run_it
+}
+
 _remove_packages() {
       _msg="Remove Cryptsetup and related packages?"
       do_it() { apt-get remove -y cryptsetup cryptsetup-initramfs cryptsetup-bin ;}
@@ -91,17 +106,17 @@ _remove_packages() {
 
 _add_backports() {
       _msg="Add backports repositories and run Apt to update?"
-      do_it() { echo 'deb http://deb.debian.org/debian bookworm-backports main' | tee /etc/apt/sources.list.d/bookworm-backports.list &&
-		        apt-get update ;}
+      do_it() { cp -f "/usr/share/lilidog/extras/backports/trixie-backports.sources" "/etc/apt/sources.list.d" &&  
+                apt-get update ;}
         see_it
         no_see
         run_it
 }
 
 _upgrade_kernel() {
-      _msg="Install backports kernel? (Also adds repositories)"
-      do_it() { echo 'deb http://deb.debian.org/debian bookworm-backports main' | tee /etc/apt/sources.list.d/bookworm-backports.list &&
-		        apt-get update && apt-get install -y -t bookworm-backports linux-image-amd64/bookworm-backports linux-headers-amd64/bookworm-backports firmware-linux ;}
+      _msg="Install backports kernel? (Also adds repositories.)"
+      do_it() { cp -f "/usr/share/lilidog/extras/backports/trixie-backports.sources" "/etc/apt/sources.list.d" &&  
+                apt-get update && apt-get install -y -t trixie-backports linux-image-amd64/trixie-backports linux-headers-amd64/trixie-backports libc6-dev firmware-linux ;}
         see_it
         no_see
         run_it
@@ -115,11 +130,6 @@ _add_slick() {
 		        ## Toggle to lightdm-greeter
                 sed -i '/greeter-session=.*/d' "/etc/lightdm/lightdm.conf"
                 sed -i '108a greeter-session=slick-greeter' "/etc/lightdm/lightdm.conf"
-                ## Menu additions
-		        sed -i '/Slickdm,             gksudo lightdm-settings,                                  lightdm-settings/d' /home/"${SUDO_USER}"/.config/jgmenu/prepend.csv
-                sed -i '/^Keybinds/a Slickdm,             gksudo lightdm-settings,                                  lightdm-settings' /home/"${SUDO_USER}"/.config/jgmenu/prepend.csv
-		        sed -i '/Auto Login,          lightdm-autologin,                             preferences-desktop-personal/d' /home/"${SUDO_USER}"/.config/jgmenu/prepend.csv
-                sed -i '/Tint2 Toggle/a Auto Login,          lightdm-autologin,                             preferences-desktop-personal' /home/"${SUDO_USER}"/.config/jgmenu/prepend.csv
                  if [[ $(command -v lightdm) ]]; then
                    if grep -Fxq 'exec "$session"' /home/"${SUDO_USER}"/.xsessionrc; then
                    sed -i 's/^exec "$session"/#exec "$session"/' /home/"${SUDO_USER}"/.xsessionrc
@@ -133,8 +143,9 @@ _add_slick() {
 }
 
 _sourcechanger() {
-      _msg="Use netselect-apt to find a faster debian mirror?"
-      do_it() { apt install -y netselect-apt
+      _msg="Use Netselect to find a faster debian mirror? Will take a few minutes..."
+      do_it() { if ! test -e "/etc/apt/sources.list.d/debian.sources"; then
+		  apt install -y netselect-apt
 		        rm -rf /tmp/sourcechanger
 		        mkdir /tmp/sourcechanger
 		          if [ ! -e "/etc/apt/sources.list-original.bak" ]; then
@@ -156,7 +167,7 @@ _sourcechanger() {
                   fi
                   if apt-get update -eany; then
                      echo
-                     echo "   [0;32mSuccess! Enjoy your new debian mirror.[0m"
+                     echo "   [0;32mSuccess! Enjoy your new mirror sources.[0m"
                      echo
                   else
                      echo
@@ -165,6 +176,9 @@ _sourcechanger() {
                      sleep 2
                      cp -f "/etc/apt/sources.list-original.bak" "/etc/apt/sources.list"
                      apt update
+                  fi 
+                  else
+                     echo "   [0;31mDefault /etc/apt/sources.list not found. Exiting.[0m"
                   fi ;}
         see_it
         no_see
@@ -211,11 +225,12 @@ _reboot() {
 
 if grep -q "#GRUB_DISABLE_OS_PROBER=false" "/etc/default/grub"; then
 _update
+_sourcechanger
+-apt_location
 _remove_packages
 _add_backports
 _upgrade_kernel
 _add_slick
-_sourcechanger
 _osprober
 _firmware
 #_autologin
@@ -226,11 +241,12 @@ sed -i '/vmrestore.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
 fi
 else
 _update
+_sourcechanger
+-apt_location
 _remove_packages
 _add_backports
 _upgrade_kernel
 _add_slick
-_sourcechanger
 _firmware
 #_autologin
 _reboot
