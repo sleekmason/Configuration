@@ -1,0 +1,71 @@
+#!/bin/bash
+read -p "   [0;33mGhostty Installer[0m
+
+   Ghostty is a terminal emulator that differentiates itself by being
+   fast, feature-rich, and native. While there are many excellent
+   terminal emulators available, they all force you to choose between
+   speed, features, or native UIs. Ghostty provides all three.
+   [0;34mhttps://github.com/ghostty-org/ghostty[0m
+
+   Ghostty requires re-opening when changing system themes. Alter the
+   background and other settings in: [0;34m~/.config/ghostty/ghostty-config[0m
+
+   To set Ghostty as your default terminal emulator:
+   [0;34msudo update-alternatives --config x-terminal-emulator[0m
+
+   [0;32mTo add or replace the 'Open Terminal Here' 'right-click' action in[0m
+   [0;32mThunar, go to: [0;33mEdit -> Configure custom actions -> Plus symbol, or
+   Edit[0m [0;32m(directly below) if wanting to change the existing entry.[0m
+
+   [0;32mUse this command:[0m [0;34mghostty --working-directory=%f[0m
+   [0;32mUnder Appearance Conditions, check the box for[0m [0;34m'Directories**'[0m
+   [0;32m------------------------------------------------------------------
+
+   Please press enter to install Ghostty.
+
+   ------------------------------------------------------------------[0m
+   Or close this terminal window to quit the install." ;
+   if : >/dev/tcp/8.8.8.8/53; then
+echo ""
+cd /tmp || exit
+rm -rf /tmp/ghostty*
+wget --prefer-family=IPv4 https://raw.githubusercontent.com/sleekmason/packages/master/ghostty_1.3.1-1_amd64.deb --show-progress -q
+wget https://raw.githubusercontent.com/sleekmason/packages/master/ghostty.zip --show-progress -q
+unzip -q "/tmp/ghostty.zip"
+sudo apt update && sudo apt install -y /tmp/ghostty_1.3.1-1_amd64.deb
+
+mkdir -p "$HOME/.config/ghostty"
+cp -f "/tmp/ghostty/config.ghostty" "$HOME/.config/ghostty"
+
+echo ""
+echo " [0;32m-------------------------------------------------------------------"
+echo ""
+echo " All Finished!
+
+ Ghostty requires re-opening when changing system themes. Alter the
+ background and other settings in: [0;34m~/.config/ghostty/ghostty-config[0m"
+ echo ""
+ echo " [0;32mSwitch ghostty to the default terminal emulator:[0m"
+ echo " [0;34msudo update-alternatives --config x-terminal-emulator[0m"
+ echo ""
+   echo " [0;32mTo add or replace the 'Open Terminal Here' 'right-click' action in[0m"
+   echo " [0;32mThunar, go to: [0;33mEdit -> Configure custom actions -> Plus symbol, or"
+   echo " Edit[0m [0;32m(directly below) if wanting to change the existing entry.[0m"
+   echo ""
+   echo " [0;32mUse this command:[0m [0;34mghostty --working-directory=%f[0m"
+   echo " [0;32mUnder Appearance Conditions, check the box for[0m [0;34m'Directories**'[0m"
+ echo ""
+ echo " [0;32mYou will find a new menu entry for Ghostty in the System section."
+echo "" 
+echo " -------------------------------------------------------------------[0m"
+echo ""
+else
+echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+ echo ""
+ echo "   [0;33mNo Internet connection. Please connect and try again.[0m"
+ echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+echo ""
+fi
+read -n1 -p " Press any key to quit this dialog ... "

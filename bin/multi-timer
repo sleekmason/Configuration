@@ -187,9 +187,9 @@ res2=/tmp/iface2.XXXXXXXX
     # run main dialog
     #  --image=gnome-calculator
     if yad  --window-icon="/usr/share/icons/ld-icons/timer.png"  --notebook --key="$KEY"  \
-    --tab=$"Timers" --tab=$"Configuration" --button="Cancel!/usr/share/icons/ld-icons/pixmaps/logout_no.png:1" \
-    --button="Start!/usr/share/icons/ld-icons/pixmaps/logout_ok.png:0" --borders="6" \
-        --image=/usr/share/icons/ld-icons/timer.png \
+    --tab=$"Timers" --tab=$"Configuration" --button="gtk-cancel:1" \
+    --button="Start!gtk-ok:0" --borders="6" \
+        --image=appointment-soon \
         --title="Multi Timer Configuration" --auto-close \
         --width=400 --image-on-top --text=$"Please set your timers and press Start.            " --text-align="center" \
         "$GEOMETRY"

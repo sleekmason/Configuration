@@ -114,7 +114,7 @@ _add_backports() {
 }
 
 _upgrade_kernel() {
-      _msg="Install backports kernel? (Also adds repositories.)"
+      _msg="Install backports kernel? (Also adds repositories)"
       do_it() { cp -f "/usr/share/lilidog/extras/backports/trixie-backports.sources" "/etc/apt/sources.list.d" &&  
                 apt-get update && apt-get install -y -t trixie-backports linux-image-amd64/trixie-backports linux-headers-amd64/trixie-backports libc6-dev firmware-linux ;}
         see_it
@@ -142,49 +142,6 @@ _add_slick() {
         run_it
 }
 
-_sourcechanger() {
-      _msg="Use Netselect to find a faster debian mirror? Will take a few minutes..."
-      do_it() { if ! test -e "/etc/apt/sources.list.d/debian.sources"; then
-		  apt install -y netselect-apt
-		        rm -rf /tmp/sourcechanger
-		        mkdir /tmp/sourcechanger
-		          if [ ! -e "/etc/apt/sources.list-original.bak" ]; then
-                     cp -f "/etc/apt/sources.list" "/etc/apt/sources.list-original.bak"
-                  fi
-                  if [ -e "/etc/apt/sources.list-original.bak" ]; then
-                     cp -f "/etc/apt/sources.list-original.bak" "/etc/apt/sources.list"
-                  fi
-                netselect-apt -o /tmp/sourcechanger/sources.list
-                grep -o -m1 'http[s]\?://[^ ]\+' /tmp/sourcechanger/sources.list > /tmp/sourcechanger/sources.txt
-                sed -i 's/.$//' /tmp/sourcechanger/sources.txt
-                  if grep -q "http://deb.debian.org/debian" <(head -n 4 "/etc/apt/sources.list-original.bak"); then
-                     sed -i -e "s/http:\/\/deb.debian.org\/debian/$(sed 's:/:\\/:g' /tmp/sourcechanger/sources.txt)/" /etc/apt/sources.list
-                  elif grep -q "https://deb.debian.org/debian" <(head -n 4 "/etc/apt/sources.list-original.bak"); then
-                     sed -i -e "s/https:\/\/deb.debian.org\/debian/$(sed 's:/:\\/:g' /tmp/sourcechanger/sources.txt)/" /etc/apt/sources.list
-                  else
-                     echo "   [0;31mOriginal debian mirrors not found. exiting.[0m"
-                  exit 0
-                  fi
-                  if apt-get update -eany; then
-                     echo
-                     echo "   [0;32mSuccess! Enjoy your new mirror sources.[0m"
-                     echo
-                  else
-                     echo
-                     echo "   [0;31mSomething is not quite right - defaulting to original sources.list.[0m"
-                     echo
-                     sleep 2
-                     cp -f "/etc/apt/sources.list-original.bak" "/etc/apt/sources.list"
-                     apt update
-                  fi 
-                  else
-                     echo "   [0;31mDefault /etc/apt/sources.list not found. Exiting.[0m"
-                  fi ;}
-        see_it
-        no_see
-        run_it
-}
-
 _osprober() {
       _msg="Enable osprober to find other distro entries in grub?"
       do_it() { sed -i 's/^#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' "/etc/default/grub" &&
@@ -203,16 +160,8 @@ _firmware() {
         run_it
 }
 
-_autologin() {
-      _msg="Enable autologin? (sudo password required)"
-      do_it() { sudo -u "${SUDO_USER}" 'lightdm-autologin' ;}
-        see_it
-        no_see
-        run_it
-}
-
 _reboot() {
-      _msg="Reboot? - (Y if new kernel or lightdm change.)"
+      _msg="Reboot? - (After Lightdm installation)"
       do_it() { sed -i '/welcome-backend.sh.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
 		  if ! grep hypervisor /proc/cpuinfo ; then
           sed -i '/vmrestore.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
@@ -225,15 +174,13 @@ _reboot() {
 
 if grep -q "#GRUB_DISABLE_OS_PROBER=false" "/etc/default/grub"; then
 _update
-_sourcechanger
 -apt_location
 _remove_packages
 _add_backports
-_upgrade_kernel
+#_upgrade_kernel
 _add_slick
 _osprober
 _firmware
-#_autologin
 _reboot
 sed -i '/welcome-backend.sh.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
 if ! grep hypervisor /proc/cpuinfo ; then
@@ -241,14 +188,12 @@ sed -i '/vmrestore.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
 fi
 else
 _update
-_sourcechanger
 -apt_location
 _remove_packages
 _add_backports
-_upgrade_kernel
+#_upgrade_kernel
 _add_slick
 _firmware
-#_autologin
 _reboot
 sed -i '/welcome-backend.sh.*/d' /home/"${SUDO_USER}"/.config/openbox/autostart
 if ! grep hypervisor /proc/cpuinfo ; then

@@ -12,25 +12,37 @@ case $noti in
   Green)
      sed -i 's/^upgradecolor=.*/upgradecolor="upgrade-green.png"/g' "$FILE"
      killall -SIGUSR1 tint2
+     killall pnmixer 2>/dev/null
+     pnmixer >/dev/null 2>&1 &
 ;;
   Blue)
      sed -i 's/^upgradecolor=.*/upgradecolor="upgrade-blue.png"/g' "$FILE"
      killall -SIGUSR1 tint2
+     killall pnmixer 2>/dev/null
+     pnmixer >/dev/null 2>&1 &
 ;;
   Magenta)
      sed -i 's/^upgradecolor=.*/upgradecolor="upgrade-magenta.png"/g' "$FILE"
      killall -SIGUSR1 tint2
+     killall pnmixer 2>/dev/null
+     pnmixer >/dev/null 2>&1 &
 ;;
   Yellow)
      sed -i 's/^upgradecolor=.*/upgradecolor="upgrade-yellow.png"/g' "$FILE"
      killall -SIGUSR1 tint2
+     killall pnmixer 2>/dev/null
+     pnmixer >/dev/null 2>&1 &
 ;;
   Orange)
      sed -i 's/^upgradecolor=.*/upgradecolor="upgrade-orange.png"/g' "$FILE"
      killall -SIGUSR1 tint2
+     killall pnmixer 2>/dev/null
+     pnmixer >/dev/null 2>&1 &
 ;;
    Red)
      sed -i 's/^upgradecolor=.*/upgradecolor="upgrade-red.png"/g' "$FILE"
-     killall -SIGUSR1 tint2 ;;
+     killall -SIGUSR1 tint2
+     killall pnmixer 2>/dev/null
+     pnmixer >/dev/null 2>&1 & ;;
         *) exit 1 ;;
     esac

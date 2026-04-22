@@ -1,74 +1,101 @@
 #!/bin/bash
-# Custom-arcadia highlight chooser
+# Custom Arcadia highlight chooser
 # Made by sleekmason 24.07.12
 
-### Default - COLOR="#3e657a"
 set -e
-## Select your new highlight color with the color chooser".
-## Replace "Color" with your selection.
 
-## Make directory if needed and copy Custom-island to ~/.themes.
-if ! test -e "$HOME/.themes"; then
-    mkdir "$HOME/.themes"
-    cp -fr "/usr/share/themes/Custom-arcadia" "$HOME/.themes"
-    cp -fr "/usr/share/themes/Custom-arcadiabox" "$HOME/.themes"
+### Set your default highlight color
+DEFAULT_COLOR="#3e657a"
+
+### Set your theme names
+GTK_THEME="Custom-arcadia"
+OPENBOX_THEME="Custom-arcadiabox"
+
+# Apply current theme
+"$HOME/.config/lilidog-themes/$GTK_THEME" > /dev/null 2>&1
+
+ORIGINAL_ICON_THEME=$(xfconf-query -c xsettings -p /Net/IconThemeName)
+APPLY_DONE=0
+
+# Restore original icons if Apply was never clicked
+cleanup_icons() {
+    if [ "$APPLY_DONE" -eq 0 ] && [ -n "$ORIGINAL_ICON_THEME" ]; then
+        sed -i '/xfconf-query -c xsettings -p \/Net\/IconThemeName/s/^#\s*//' \
+            "$HOME/.config/lilidog-themes/$GTK_THEME"
+        sed -i \
+          "s|^\(#\s*\)\?xfconf-query -c xsettings -p /Net/IconThemeName -s \".*\"|xfconf-query -c xsettings -p /Net/IconThemeName -s \"$ORIGINAL_ICON_THEME\"|" \
+          "$HOME/.config/lilidog-themes/$GTK_THEME"
+        "$HOME/.config/lilidog-themes/$GTK_THEME" > /dev/null 2>&1
+    fi
+}
+
+trap cleanup_icons EXIT INT TERM
+
+# Ensure themes exist in ~/.themes
+mkdir -p "$HOME/.themes"
+for t in "$GTK_THEME" "$OPENBOX_THEME"; do
+    [ ! -e "$HOME/.themes/$t" ] && cp -fr "/usr/share/themes/$t" "$HOME/.themes"
+done
+
+# Copy readme if it exists
+[ -e "/usr/share/lilidog/Readme.lilidog-themes" ] && \
+    cp -f "/usr/share/lilidog/Readme.lilidog-themes" "$HOME/.themes/"
+
+# Comment icon line during pick
+sed -i '/xfconf-query -c xsettings -p \/Net\/IconThemeName/s/^#*/# /g' \
+    "$HOME/.config/lilidog-themes/$GTK_THEME"
+
+COLOR_CHOICE=$(yad --color --init-color="$DEFAULT_COLOR" \
+    --gtk-palette --palette=/usr/share/X11/rgb.txt \
+    --form --width=340 --center --borders=6 \
+    --title="$GTK_THEME Theme Highlight Color" \
+    --window-icon=org.xfce.settings.color \
+    --field="Color" \
+    --button=" Change Icon!org.xfce.settings.color:bash -c 'xfce4-appearance-settings & sleep 0.5; xdotool key Alt+i &'" \
+    --button=" Cancel!gtk-delete":1 \
+    --button=" Apply!gtk-color-picker":0)
+
+RETVAL=$?
+if [ "$RETVAL" -ne 0 ]; then
+    cleanup_icons
+    exit 0
 fi
-if ! test -e "$HOME/.themes/Custom-arcadia"; then
-    cp -fr "/usr/share/themes/Custom-arcadia" "$HOME/.themes"
-    cp -fr "/usr/share/themes/Custom-arcadiabox" "$HOME/.themes"
+
+# Capture current icon theme and save it immediately
+CURRENT_ICON_THEME=$(xfconf-query -c xsettings -p /Net/IconThemeName)
+sed -i \
+  "s|^\(#\s*\)\?xfconf-query -c xsettings -p /Net/IconThemeName -s \".*\"|xfconf-query -c xsettings -p /Net/IconThemeName -s \"$CURRENT_ICON_THEME\"|" \
+  "$HOME/.config/lilidog-themes/$GTK_THEME"
+sed -i '/xfconf-query -c xsettings -p \/Net\/IconThemeName/s/^#\s*//' \
+  "$HOME/.config/lilidog-themes/$GTK_THEME"
+
+# Mark done so trap won't revert icons
+APPLY_DONE=1
+
+# Apply color if chosen, while removing cruft
+if [[ -n "$COLOR_CHOICE" ]]; then
+    NEW_COLOR=$(echo "$COLOR_CHOICE" | sed 's|[#,]||g')
+
+    if grep -q "#$NEW_COLOR" "$HOME/.themes/$GTK_THEME/gtk-3.0/gtk-contained.css"; then
+        echo
+        echo "--------------------------------------------"
+        echo "Your color choice is null or already in use."
+        echo "Please make another selection."
+        echo "--------------------------------------------"
+        exit 0
+    fi
+
+    OLD_COLOR=$(sed '16!d' "$HOME/.themes/$GTK_THEME/gtk-3.0/gtk-contained.css" | cut -d'#' -f2 | sed 's/...$//')
+    echo "#$NEW_COLOR" >> "/tmp/${GTK_THEME}_color.txt"
+
+    for file in \
+        "$HOME/.themes/$GTK_THEME/gtk-3.0/gtk-contained.css" \
+        "$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc" \
+        "$HOME/.themes/$OPENBOX_THEME/openbox-3/themerc"; do
+        sed -i -e "s/${OLD_COLOR}/${NEW_COLOR}/g" "$file"
+    done
 fi
 
-## Add the readme file to ~/.themes.
-if test -e "/usr/share/lilidog"; then
-   if ! test -e "$HOME/.themes/Readme.lilidog-themes"; then
-   cp -f "/usr/share/lilidog/Readme.lilidog-themes" "$HOME/.themes"
-   fi
-fi
-
-## Set the theme before changing.
-"$HOME/.config/lilidog-themes/Custom-arcadia"  > /dev/null 2>&1
-
-## "--color" can be removed if wanting to use a separate color chooser.
-COLOR_CHOICE=( $(yad --color --init-color=#3e657a \
---gtk-palette --palette=/usr/share/X11/rgb.txt \
---form --width=320 --center --borders=6 --on-top \
---title="Custom Arcadia Theme Highlight Color " \
---button=Cancel!gtk-delete:1 \
---button=Apply!gtk-color-picker:0 \
---window-icon=org.xfce.settings.color \
---text="Please enter color choice:" --separator=' ' \
---field="Color"))
-
-## Remove "#" if present.
-if [[ $COLOR_CHOICE == *#* ]]; then
-    NEW_COLOR=$(echo $COLOR_CHOICE | sed 's|[#,]||g')
-else
-    NEW_COLOR=$COLOR_CHOICE
-fi
-
-## Check if chosen number is not already used.
-if grep -q "#$NEW_COLOR" "$HOME/.themes/Custom-arcadia/gtk-3.0/gtk-contained.css"; then
-    echo
-    echo "   --------------------------------------------"
-    echo
-    echo "   Your color choice is null or already in use."
-    echo "   Please make another selection."
-    echo
-    echo "   --------------------------------------------"
-else
-
-## Grab the old color for variable use.
-OLD_COLOR=$(sed '16!d' $HOME/.themes/Custom-arcadia/gtk-3.0/gtk-contained.css | cut -d'#' -f2 | sed 's/...$//')
-
-## Show numbers.
-echo "#$NEW_COLOR" >> "/tmp/custom_arcadia_color.txt"
-
-## Make the change for GTK-3.0, GTK-2.0, and openbox themerc.
-sed -i -e "s/${OLD_COLOR}/${NEW_COLOR}/g" "$HOME/.themes/Custom-arcadia/gtk-3.0/gtk-contained.css"
-sed -i -e "s/${OLD_COLOR}/${NEW_COLOR}/g" "$HOME/.themes/Custom-arcadia/gtk-2.0/gtkrc"
-sed -i -e "s/${OLD_COLOR}/${NEW_COLOR}/g" "$HOME/.themes/Custom-arcadiabox/openbox-3/themerc"
-
-## Refresh Theme
+# Refresh theme
 xfconf-query -c xsettings -p /Net/ThemeName -r
-"$HOME/.config/lilidog-themes/Custom-arcadia"  > /dev/null 2>&1
-fi
+"$HOME/.config/lilidog-themes/$GTK_THEME" > /dev/null 2>&1

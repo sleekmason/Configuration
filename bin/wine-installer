@@ -1,0 +1,100 @@
+#!/bin/bash
+read -p "   [0;33mWine Installer[0m
+
+   Wine, originally an acronym for 'Wine Is Not an Emulator' is a
+   compatibility layer capable of running Windows applications on
+   several POSIX-compliant systems, such as Linux, macOS, & BSD.
+   
+   This installer will install Wine and the Winetricks package to
+   provide a Wine GUI. Note, the i386 architecture will be added.
+     
+   Wine Download size: 413MB - Required space: 2,237MB
+   
+   [0;34mhttps://www.winehq.org/[0m
+   
+   [0;32m--------------------------------------------------------------
+
+   Please press enter to install Wine with Winetricks.
+
+   --------------------------------------------------------------[0m
+
+   Or, close this terminal window to quit the install." ;
+   
+if [ -e /run/live/medium ] || [ -e /lib/live/mount ] || \
+   findmnt -n -o FSTYPE / | grep -Eq 'overlay|squashfs'; then
+    echo ""
+    echo "   [0;31m--------------------------------------------------------------[0m"
+    echo ""
+    echo "   [0;33mLive environment detected.[0m"
+    echo ""
+    echo "   [0;33mInstallation of Wine in a live environment is not supported."
+    echo ""
+    echo "   [0;31m--------------------------------------------------------------[0m"
+    echo ""
+    read -n1 -p " Press any key to quit this dialog ... "
+    exit 0
+fi
+
+if : >/dev/tcp/8.8.8.8/53; then
+
+sudo dpkg --add-architecture i386 || exit
+echo ""
+echo "   [0;32mAdding i386 architecture...[0m"
+sleep 1
+echo ""
+echo "   [0;32mUpdating sources to include the wine repositories...[0m"
+echo ""
+sleep 1
+
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key || exit
+
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources || exit
+echo "   [0;32mInstalling Wine...[0m"
+echo ""
+sleep 1
+sudo apt update
+sudo apt install --install-recommends -y winehq-stable winetricks zenity || exit
+
+file="$HOME/.config/jgmenu/prepend.csv"
+if [[ -f "$file" ]] && grep -q "Quick Grab" "$file"; then
+sed -i '/Winetricks,         winetricks,                        winetricks/d' "$file" &&
+sed -i '/Root Folders,^checkout(rootfiles),folder/a Winetricks,         winetricks,                        winetricks' "$file"
+killall -q jgmenu
+fi
+
+echo ""
+echo "   [0;32mSetting up the environment...[0m"
+sleep 2
+echo ""
+echo "   [0;33mClick 'Install' to install wine-mono through wine.[0m"
+echo "   [0;33mWine-mono is not available through Debian.[0m"
+echo ""
+echo "   [0;34mClick OK to use windows 10, or change as desired.[0m"
+echo ""
+sleep 2
+winecfg
+echo ""
+echo "   [0;33mStarting Wine clock to check the installation...[0m"
+echo ""
+sleep 1
+wine clock &
+echo ""
+echo "   [0;34m------------------------------------------------------------[0m"
+echo ""
+echo "   [0;33mAll Finished. Enjoy Wine![0m"
+echo ""
+echo "   [0;34mLook for Winetricks in the Quickgrab menu for an easy start.[0m"
+echo ""
+echo "   [0;34m------------------------------------------------------------[0m"
+echo ""
+else
+echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+ echo ""
+ echo "   [0;33mNo Internet connection. Please connect and try again.[0m"
+ echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+echo ""
+fi
+read -n1 -p " Press any key to quit this dialog ... "
