@@ -21,7 +21,7 @@ sed -i "s/color_scheme=.*/color_scheme=Ghost.conf/g" ~/.config/geany/geany.conf
 if test -e ~/.config/jgmenu/backup; then
 rm -fr ~/.config/jgmenu/backup
 fi
-jgmenu_run init --apply-obtheme
+jgmenu_run init --apply-obtheme >/dev/null 2>&1
 
 ## Change xfce4-terminal theme
 #xfce4-term-colors ghost
@@ -30,8 +30,8 @@ xfconf-query -c xfce4-terminal -p /color-foreground -s "#e8e8eeeef0f0"
 xfconf-query -c xfce4-terminal -p /color-palette -s "rgb(24,27,31);rgb(242,77,77);rgb(40,173,111);rgb(235,216,174);rgb(136,202,235);rgb(239,139,192);rgb(50,187,178);rgb(166,172,174);rgb(137,146,153);rgb(255,116,116);rgb(71,207,133);rgb(245,230,196);rgb(132,207,245);rgb(255,156,212);rgb(65,232,204);rgb(209,212,215)"
 
 ## Change Rofi theme
-sed -i 's/^@theme "familiar.*/@theme "familiar-ghost.rasi"/g' "$HOME/.config/rofi/themes/familiar/config.rasi"
-sed -i 's/^@theme "rounded.*/@theme "rounded-ghost.rasi"/g' "$HOME/.config/rofi/config.rasi"
+sed -i 's/^@theme "familiar.*/@theme "familiar-ghost.rasi"/g' "$HOME/.config/rofi/themes/familiar/config.rasi" >/dev/null 2>&1
+sed -i 's/^@theme "rounded.*/@theme "rounded-ghost.rasi"/g' "$HOME/.config/rofi/config.rasi" >/dev/null 2>&1
 
 # These lines are for the light/dark toggle and the custom toggle. Do not remove.
 # Comment these lines in Custom-Theme or Light-Dark-Theme if copying a named theme.
