@@ -1,6 +1,5 @@
 #!/bin/bash
-echo ""
-read -p "   Full Theme Reset
+read -p "   [0;33mFull Theme Reset[0m
 
    Resets most theming elements to installation default.
 
@@ -12,7 +11,7 @@ read -p "   Full Theme Reset
 
    [0;36m-------------------------------------------------------
    
-   Press enter to reset the theme to installation default.
+   Press enter to reset the theme to installation default
    
    -------------------------------------------------------[0m
       
