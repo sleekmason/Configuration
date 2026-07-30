@@ -29,7 +29,7 @@ yad --title "Auto Themes" --escape-ok --borders=10 \
 --button=" Custom Themes!org.xfce.settings.color:bash -c 'popup -f $HOME/.config/lilidog-themes/custom-themes.txt &'" \
 --button=" Auto Icons!gtk-color-picker:bash -c 'ICON_TOGGLE'" \
 --button=" Exit!gtk-delete:0" \
---center --width=440 --height=424 \
+--geometry=360x420+40+44 \
 --text="Please close Geany before making selection\nCustomize the highlight color of select themes through the 'Custom Themes' button\n" \
 --text-align=center \
 --window-icon=org.xfce.settings.color \
@@ -46,7 +46,7 @@ yad --title "Auto Themes" --escape-ok --borders=10 \
     --field="Fane":FBTN "$HOME/.config/lilidog-themes/Fane" \
     --field="Forge":FBTN "$HOME/.config/lilidog-themes/Forge" \
     --field="Ink":FBTN "$HOME/.config/lilidog-themes/Ink" \
-    --field="Nightshade":FBTN "$HOME/.config/lilidog-themes/Nightshade" \
+    --field=" Nightshade ":FBTN "$HOME/.config/lilidog-themes/Nightshade" \
     --field="Ozark":FBTN "$HOME/.config/lilidog-themes/Ozark" \
     --field="Custom Arcadia":FBTN "$HOME/.config/lilidog-themes/Custom-arcadia" \
     --field="Custom Drow":FBTN "$HOME/.config/lilidog-themes/Custom-drow" \
