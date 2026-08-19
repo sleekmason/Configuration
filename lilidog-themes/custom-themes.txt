@@ -1,5 +1,6 @@
 Custom Arcadia,    bash -c 'custom-arcadia-chooser',    org.xfce.settings.color
 Custom Cove,       bash -c 'custom-cove-chooser',       org.xfce.settings.color
+Custom Dragon,     bash -c 'custom-dragon-chooser',     org.xfce.settings.color
 Custom Drow,       bash -c 'custom-drow-chooser',       org.xfce.settings.color
 Custom Fane,       bash -c 'custom-fane-chooser',       org.xfce.settings.color
 Custom Forge,      bash -c 'custom-forge-chooser',      org.xfce.settings.color
