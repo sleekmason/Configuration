@@ -2,7 +2,7 @@
 # Custom Drow highlight chooser
 # Made by sleekmason 24.07.12
 
-DEFAULT_COLOR="#216142"
+DEFAULT_COLOR="#185e49"
 DEFAULT_ICON_THEME="Obsidian-Green"
 
 GTK_THEME="Custom-drow"
