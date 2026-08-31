@@ -26,6 +26,14 @@ cleanup_icons() {
 }
 trap cleanup_icons EXIT INT TERM
 
+icon_init() {
+    xfce4-appearance-settings >/dev/null 2>&1 &
+    WIN_ID=$(xdotool search --sync --onlyvisible --name "Appearance" | head -n1)
+    xdotool windowactivate --sync "$WIN_ID"
+    xdotool key Alt+i
+}
+export -f icon_init
+
 # Ensure ~/.themes and copy theme
 mkdir -p "$HOME/.themes"
 for t in "$GTK_THEME" "$OPENBOX_THEME"; do
@@ -46,7 +54,7 @@ COLOR_CHOICE=$(yad --color --init-color="$DEFAULT_COLOR" \
     --window-icon=org.xfce.settings.color \
     --field="Color" \
     --button=" Reset!view-refresh":2 \
-    --button=" Change Icon!org.xfce.settings.color:bash -c 'xfce4-appearance-settings & sleep 0.5; xdotool key Alt+i &'" \
+    --button=" Change Icon!org.xfce.settings.color:bash -c icon_init >/dev/null 2>&1" \
     --button=" Cancel!gtk-delete":1 \
     --button=" Apply!gtk-color-picker":0)
 RETVAL=$?
