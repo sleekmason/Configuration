@@ -2,8 +2,8 @@
 # Custom dragon highlight chooser
 # Made by sleekmason 24.07.12
 
-DEFAULT_COLOR="#234f78"
-DEFAULT_ICON_THEME="Obsidian"
+DEFAULT_COLOR="#3e4547"
+DEFAULT_ICON_THEME="Obsidian-Silver"
 
 GTK_THEME="Custom-dragon"
 OPENBOX_THEME="Custom-dragonbox"
