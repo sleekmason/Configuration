@@ -1,0 +1,165 @@
+#!/bin/bash
+FILE="$HOME/.config/jgmenu/prepend.csv"
+echo ""
+read -p"   [0;33mKitchensink Installer[0m 
+   
+   A non interactive installation script of particular packages
+   making for an easy initial system setup.
+   
+   Now installs: gimp, openssh-sftp-server, filezilla, mousepad
+   pcmanfm, firefox, mpv, Circle icons, Papirus icons, obsidian
+   icons, and Thunderbird.
+    
+   [0;32m------------------------------------------------------------
+   
+   Please press enter to install the packages.
+   
+   ------------------------------------------------------------[0m
+   
+   
+   Or, close this terminal window to quit the install." ;
+   if : >/dev/tcp/8.8.8.8/53; then
+echo ""
+echo ""
+cd /tmp || exit &&
+## Get rid of left over packages.
+rm -f /tmp/circle-icons*
+rm -f /tmp/zshrc.zip
+rm -f /tmp/.zshrc
+echo ""
+echo "   [0;33mPlease enter your password...[0m"
+echo ""
+sudo apt update &&
+echo ""
+echo "   [0;33mDownloading some initial packages...[0m"
+echo ""
+wget --prefer-family=IPv4 https://raw.githubusercontent.com/sleekmason/packages/master/circle-icons_12.0-2_all.deb --show-progress -q
+echo ""
+echo "   [0;33mBeginning installation...[0m" && sleep 1
+echo ""
+echo "   [0;33mInstalling extra icons...[0m" && sleep 1
+echo ""
+sudo apt install -y ./circle-icons_12.0-2_all.deb obsidian-icon-theme papirus-icon-theme
+
+if ! test -e "$HOME/.local/share/icons/Papirus-Red"; then
+echo "--------------------------------------------------------------"
+echo "   [0;33mCreating Papirus theme colors.[0m"
+echo ""
+echo "   [0;32mCreating the Bluegrey icon color scheme.[0m"
+cd ~/.local/share/icons &&
+papirus-folder-color.sh bluegrey &&
+mv ~/.local/share/icons/Papirus-color Papirus-Bluegrey &&
+ sed -i "2s/color/Bluegrey/g" ~/.local/share/icons/Papirus-Bluegrey/index.theme
+ echo "   [0;33mBluegrey icon theme added.[0m"
+ 
+ echo ""
+ echo "   [0;32mCreating the Brown icon color scheme.[0m"
+papirus-folder-color.sh brown &&
+mv ~/.local/share/icons/Papirus-color Papirus-Brown &&
+ sed -i "2s/color/Brown/g" ~/.local/share/icons/Papirus-Brown/index.theme
+ echo "   [0;33mBrown icon theme added.[0m"
+ 
+ echo ""
+ echo "   [0;32mCreating the Red icon color scheme.[0m"
+papirus-folder-color.sh red &&
+mv ~/.local/share/icons/Papirus-color Papirus-Red &&
+ sed -i "2s/color/Red/g" ~/.local/share/icons/Papirus-Red/index.theme
+ echo "   [0;33mRed icon theme added.[0m"
+ 
+ echo ""
+ echo "   [0;32mCreating the Grey icon color scheme.[0m"
+papirus-folder-color.sh grey &&
+mv ~/.local/share/icons/Papirus-color Papirus-Grey &&
+ sed -i "2s/color/Grey/g" ~/.local/share/icons/Papirus-Grey/index.theme
+ echo "   [0;33mGrey icon theme added.[0m"
+ 
+ echo ""
+ echo "   [0;32mCreating the Black icon color scheme.[0m"
+papirus-folder-color.sh black &&
+mv ~/.local/share/icons/Papirus-color Papirus-Black &&
+ sed -i "2s/color/Black/g" ~/.local/share/icons/Papirus-Black/index.theme
+ echo "   [0;33mBlack icon theme added.[0m"
+ 
+echo ""
+ echo "   [0;32mCreating the Deeporange icon color scheme.[0m"
+papirus-folder-color.sh deeporange &&
+mv ~/.local/share/icons/Papirus-color Papirus-Deeporange &&
+ sed -i "2s/color/Deeporange/g" ~/.local/share/icons/Papirus-Deeporange/index.theme
+ echo "   [0;33mDeeporange icon theme added.[0m"
+ 
+ echo ""
+ echo "   [0;32mCreating the Teal icon color scheme.[0m"
+papirus-folder-color.sh teal &&
+mv ~/.local/share/icons/Papirus-color Papirus-Teal &&
+ sed -i "2s/color/Teal/g" ~/.local/share/icons/Papirus-Teal/index.theme
+echo "   [0;33mTeal icon theme added.[0m"
+
+ echo ""
+ echo "   [0;32mCreating the Green icon color scheme.[0m"
+papirus-folder-color.sh green &&
+mv ~/.local/share/icons/Papirus-color Papirus-Green &&
+ sed -i "2s/color/Green/g" ~/.local/share/icons/Papirus-Green/index.theme
+echo "   [0;33mGreen icon theme added.[0m"
+
+ echo ""
+ echo "   [0;32mCreating the Violet icon color scheme.[0m"
+papirus-folder-color.sh violet &&
+mv ~/.local/share/icons/Papirus-color Papirus-Violet &&
+ sed -i "2s/color/Violet/g" ~/.local/share/icons/Papirus-Violet/index.theme
+echo "   [0;33mViolet icon theme added.[0m"
+
+ echo ""
+ echo "   [0;32mCreating the Nordic icon color scheme.[0m"
+papirus-folder-color.sh nordic &&
+mv ~/.local/share/icons/Papirus-color Papirus-Nordic &&
+ sed -i "2s/color/Nordic/g" ~/.local/share/icons/Papirus-Nordic/index.theme
+echo "   [0;33mNordic icon theme added.[0m"
+
+ echo ""
+ echo "   [0;32mCreating the Indigo icon color scheme.[0m"
+papirus-folder-color.sh indigo &&
+mv ~/.local/share/icons/Papirus-color Papirus-Indigo &&
+ sed -i "2s/color/Indigo/g" ~/.local/share/icons/Papirus-Indigo/index.theme
+echo "   [0;33mIndigo icon theme added.[0m"
+
+echo ""
+echo "   [0;32mCreating the Yaru icon color scheme.[0m"
+papirus-folder-color.sh yaru &&
+mv ~/.local/share/icons/Papirus-color Papirus-Yaru &&
+ sed -i "2s/color/Yaru/g" ~/.local/share/icons/Papirus-Yaru/index.theme
+echo "   [0;33mYaru icon theme added.[0m"
+
+echo ""
+echo "   [0;32mCreating the Magenta icon color scheme.[0m"
+papirus-folder-color.sh magenta &&
+mv ~/.local/share/icons/Papirus-color Papirus-Magenta &&
+sed -i "2s/color/Magenta/g" ~/.local/share/icons/Papirus-Magenta/index.theme
+echo "   [0;33mMagenta icon theme added.[0m"
+fi
+echo ""
+echo "   [0;33mEnjoy your new icon themes![0m"
+echo "   [0;33mContinuing...[0m"
+sudo update-icon-caches /usr/share/icons/*
+## The rest of the packages
+sudo apt install -y mousepad openssh-sftp-server filezilla firefox-esr thunderbird \
+hunspell-en-us gimp gimp-data-extras ghostscript libgts-bin \
+gimp-texturize pcmanfm
+echo ""
+echo ""
+echo "   [0;33m----------------------------------------------------------------"
+echo ""
+echo "   All Finished!"
+echo ""
+echo "   ----------------------------------------------------------------[0m"
+else
+echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+ echo ""
+ echo "   [0;33mNo Internet connection. Please connect and try again.[0m"
+ echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+echo ""
+fi
+echo ""
+echo ""
+read -n1 -p " Press any key to quit this dialog ... "

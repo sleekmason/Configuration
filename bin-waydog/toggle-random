@@ -1,0 +1,36 @@
+#!/bin/bash
+# Toggle wrapper for Random-wallpaper in Waydog.
+# Made by sleekmason 13 Dec 2025
+
+PIDFILE="$XDG_RUNTIME_DIR/random-wallpaper.pid"
+CONFIG_FILE="$HOME/.config/random.ini"
+NOTIFY_CMD="notify-send -i preferences-desktop-wallpaper"
+
+if [[ -f "$CONFIG_FILE" ]]; then
+    INTERVAL=$(grep -Po '^\s*INTERVAL_MINUTES\s*=\s*\K.*' "$CONFIG_FILE")
+else
+    INTERVAL="unknown"
+fi
+
+for arg in "$@"; do
+    case "$arg" in
+        --nonoti)
+            NOTIFY_CMD=":"
+            ;;
+    esac
+done
+
+# If calling 'once', avoid notify if daemon is running
+if [ "$1" = "once" ] && [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+    random-wallpaper once
+    exit 0
+fi
+
+if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+    kill -TERM "$(cat "$PIDFILE")"
+    $NOTIFY_CMD "Random Wallpaper Stopped"
+else
+    random-wallpaper &
+    $NOTIFY_CMD \
+        "Random Wallpaper" "Settings: ~/.config/random.ini (interval: $INTERVAL min)"
+fi

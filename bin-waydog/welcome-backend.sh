@@ -1,0 +1,59 @@
+#!/bin/bash
+# welcome backend
+# Made for Waydog by sleekmason
+
+STAMP="$HOME/.local/share/.remove"
+
+# Run once
+[ -f "$STAMP" ] && exit 0
+
+# Detect live vs installed
+if [ -e /run/live/medium ]; then
+    MODE="live"
+else
+    MODE="installed"
+fi
+
+# Setup
+case "$MODE" in
+  live)
+    /usr/local/bin/live-session
+    ;;
+  installed)
+    /usr/local/bin/installed-session
+    ;;
+esac
+
+# Mark done
+mkdir -p "$(dirname "$STAMP")"
+touch "$STAMP"
+
+# Remove autostart entries
+sed -i '/welcome-backend.sh/d' "$HOME/.config/labwc/autostart"
+sed -i '/welcome-backend.sh/d' "$HOME/.config/sway/config"
+
+# Launch welcome
+if command -v yad >/dev/null; then
+  if [ "$MODE" = "installed" ]; then
+    yad --title "Welcome to Waydog!" \
+      --window-icon=/usr/share/icons/ld-icons/paw-color.png \
+      --width=428 --height=350 --center \
+      --escape-ok --undecorated --skip-taskbar \
+      --button=" Begin"!/usr/share/icons/gnome/22x22/places/debian-swirl.png!:"x-terminal-emulator -T 'Customization' -e 'sudo xentry -i'" \
+      --button=" Exit!application-exit:0" \
+      --text-info --justify=left --wrap \
+      < /usr/share/lilidog/welcome.txt \
+      --fontname="JetBrains Mono Regular 10"
+  else
+    yad --title "Welcome to Waydog!" \
+      --window-icon=/usr/share/icons/ld-icons/paw-color.png \
+      --width=428 --height=352 --center \
+      --escape-ok --undecorated --skip-taskbar \
+      --button="gtk-ok:0" \
+      --text-info --justify=left --wrap \
+      < /usr/share/lilidog/welcome2.txt \
+      --fontname="JetBrains Mono Regular 10"
+  fi
+fi
+
+exit 0

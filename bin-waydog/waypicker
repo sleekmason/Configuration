@@ -1,0 +1,103 @@
+#!/bin/bash
+#
+# Based originally from: https://github.com/jgmdev/wl-color-picker
+# Made for Waydog by sleekmason 5 Jan 2025.
+
+showhelp() {
+    echo "A basic wlroots compatible color picker script."
+    echo ""
+    echo "Usage:"
+    echo "  waypicker [command] [options]"
+    echo ""
+    echo "Commands:"
+    echo "  clipboard       Copy color to clipboard without dialog"
+    echo "    --no-notify   Don't show a system notification of copied color"
+}
+
+CLIPBOARD=0
+NO_NOTIFY=0
+
+while [ "$1" ]; do
+    case $1 in
+        '-h' | '--help' | 'help' | '?' )
+            showhelp
+            exit
+            ;;
+        'clipboard' )
+            CLIPBOARD=1
+            ;;
+        '--no-notify' )
+            NO_NOTIFY=1
+            ;;
+    esac
+    shift
+done
+
+# Check if running under wayland.
+if [ -z "$WAYLAND_DISPLAY" ]; then
+    yad --error --width=400 \
+        --title="No wayland session found." \
+        --text="This color picker must be run under a valid wayland session."
+    exit 1
+fi
+
+# Main loop.
+while true; do
+# Get color position.
+position=$(slurp -b 00000000 -p)
+if [ -z "$position" ]; then
+    [ "$CLIPBOARD" -eq 1 ] && exit 0
+    continue
+fi
+
+    # Prevent grim timing issue.
+    sleep 0.50
+
+    # Store hex color value.
+    if command -v /usr/bin/gm &> /dev/null; then
+        color=$(grim -g "$position" -t png - \
+            | /usr/bin/gm convert - -format '%[pixel:p{0,0}]' txt:- \
+            | tail -n 1 | rev | cut -d ' ' -f 1 | rev)
+    else
+        color=$(grim -g "$position" -t png - \
+            | convert - -format '%[pixel:p{0,0}]' txt:- \
+            | tail -n 1 | cut -d ' ' -f 4)
+    fi
+
+    if [ "$CLIPBOARD" -eq 1 ]; then
+        echo "$color" | wl-copy -n
+        if [ "$NO_NOTIFY" -ne 1 ]; then
+            notify-send "Color copied to clipboard" "$color"
+        fi
+        exit 0
+    fi
+
+    # Copy initial color.
+    echo "$color" | wl-copy -n
+
+    yad_output=$(yad --color --gtk-palette --palette=/usr/share/X11/rgb.txt \
+        --title="Color Copied To Clipboard" \
+        --init-color="$color" \
+        --button=" Repick!emblem-synchronizing":10 \
+        --button=" OK!emblem-default":0
+    )
+
+case $? in
+    10)
+        continue
+        ;;
+    0)
+        if [ -n "$yad_output" ] && [ "$yad_output" != "$color" ]; then
+            final_color="$yad_output"
+        else
+            final_color="$color"
+        fi
+
+        echo "$final_color" | wl-copy -n
+        exit 0
+        ;;
+    *)
+        exit 0
+        ;;
+esac
+done

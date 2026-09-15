@@ -1,0 +1,103 @@
+#!/bin/bash
+# Waybar Module Toggle
+# Made by sleekmason for Waydog 25 Feb 2026
+
+STYLE="$HOME/.config/waybar/style.css"
+
+restart_waybar() {
+    if pgrep -x waybar >/dev/null; then
+        pkill -USR2 waybar
+        return
+    fi
+
+    if pgrep -x sway >/dev/null; then
+        waybar -c "$HOME/.config/waybar/sway/config.jsonc" &
+    elif pgrep -x niri >/dev/null; then
+        waybar -c "$HOME/.config/waybar/niri/config.jsonc" &
+    else
+        waybar &
+    fi
+}
+
+HIDE="min-width: 0; min-height: 0; padding: 0; margin: 0; font-size: 0; border: none; background: transparent;"
+
+toggle_module() {
+    local mod="$1"
+    local label="${2:-$mod}"
+
+if [[ "$mod" == "power-profiles-daemon" ]] &&
+   [[ "$(systemctl is-enabled power-profiles-daemon 2>/dev/null)" == "masked" ]]; then
+    notify-send -u low "Enable Power Profiles from the menu"
+    return
+fi
+
+    [[ -f "$STYLE" ]] || {
+        notify-send -i preferences-desktop-warning "Waybar Modules" "CSS file not found: $STYLE"
+        return
+    }
+
+    if grep -q "^#${mod} .*min-width: 0" "$STYLE"; then
+        sed -i "/^#${mod} .*min-width: 0.*$/d" "$STYLE"
+        notify-send -i preferences-desktop "${label} Module  ▸  ON"
+    else
+        echo "#${mod} { ${HIDE} }" >> "$STYLE"
+        notify-send -i preferences-desktop "${label} Module  ▸  OFF"
+    fi
+
+    restart_waybar
+}
+
+reset_modules() {
+    [[ -f "$STYLE" ]] || return
+    sed -i "/^#[a-zA-Z_-]\+.*min-width: 0.*$/d" "$STYLE"
+    notify-send -i preferences-desktop "All modules restored"
+    restart_waybar
+}
+
+case "$1" in
+    cpu)                        toggle_module cpu "CPU" ;;
+    clock)                      toggle_module clock "Clock" ;;
+    idle_inhibitor)             toggle_module idle_inhibitor "Idle Inhibitor" ;;
+    memory)                     toggle_module memory "Memory" ;;
+    temperature)                toggle_module temperature "Temperature" ;;
+    pulseaudio)                 toggle_module pulseaudio "Audio" ;;
+    backlight)                  toggle_module backlight "Backlight" ;;
+    language)                   toggle_module language "Language" ;;
+    network)                    toggle_module network "Network" ;;
+    battery)                    toggle_module battery "Battery" ;;
+    power-profiles-daemon)      toggle_module power-profiles-daemon "Power Profiles" ;;
+    launcher1)                  toggle_module "custom-launcher1" "Menu" ;;
+    launcher2)                  toggle_module "custom-launcher2" "Files" ;;
+    launcher3)                  toggle_module "custom-launcher3" "Terminal" ;;
+    launcher4)                  toggle_module "custom-launcher4" "Web Browser" ;;
+    launcher5)                  toggle_module "custom-launcher5" "Desktop" ;;
+    reset)                      reset_modules ;;
+    *)
+SELF="$(realpath "$BASH_SOURCE")"
+        while true; do
+            yad --title "Modules" \
+                --width=240 --height=385 --borders=10 --center \
+                --columns=2 \
+                --buttons-layout=spread --form \
+                --button="Reset!edit-clear":"bash '$SELF' reset" \
+                --button="Close!gtk-close:1" \
+                --field="Audio":FBTN               "bash '$SELF' pulseaudio" \
+                --field="Backlight":FBTN           "bash '$SELF' backlight" \
+                --field="Battery":FBTN             "bash '$SELF' battery" \
+                --field="Clock":FBTN               "bash '$SELF' clock" \
+                --field="CPU":FBTN                 "bash '$SELF' cpu" \
+                --field="Desktop":FBTN             "bash '$SELF' launcher5" \
+                --field="Files":FBTN               "bash '$SELF' launcher2" \
+                --field="  Idle Inhibitor  ":FBTN  "bash '$SELF' idle_inhibitor" \
+                --field="Language":FBTN            "bash '$SELF' language" \
+                --field="Memory":FBTN              "bash '$SELF' memory" \
+                --field="Menu":FBTN                "bash '$SELF' launcher1" \
+                --field="Network":FBTN             "bash '$SELF' network" \
+                --field=" Power Profiles ":FBTN    "bash '$SELF' power-profiles-daemon" \
+                --field="Temperature":FBTN         "bash '$SELF' temperature" \
+                --field="Terminal":FBTN            "bash '$SELF' launcher3" \
+                --field="Web Browser":FBTN         "bash '$SELF' launcher4" \
+                || break
+        done
+        ;;
+esac

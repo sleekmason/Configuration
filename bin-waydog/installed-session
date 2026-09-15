@@ -1,0 +1,26 @@
+#!/bin/bash
+#installed-session
+# This script is for one time installed session use and can be removed if installed.
+
+# gsettings lines.
+gsettings set org.gnome.desktop.interface gtk-theme "Dragon"
+gsettings set org.gnome.desktop.interface icon-theme "Obsidian"
+gsettings set org.gnome.desktop.interface font-name "Sans 11"
+gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+xdg-user-dirs-update
+# set thunar as default for inode/directory
+xdg-mime default thunar.desktop inode/directory
+# Remove face icons in $HOME
+rm -f "$HOME"/.face
+rm -f "$HOME"/.face.icon
+# Add bin paths
+mkdir -p "$HOME/bin" "$HOME/.local/bin"
+# Add ~/Pictures and ~/Pictures/wallpapers
+mkdir -p Pictures/wallpapers
+# Keyboard settings for labwc and sway
+LAYOUT=$(grep '^XKBLAYOUT=' /etc/default/keyboard | cut -d'"' -f2)
+[[ -z "$LAYOUT" ]] && LAYOUT="us"
+sed -i "s|xkb_layout \".*\"|xkb_layout \"$LAYOUT\"|" "$HOME/.config/sway/config"
+sed -i "s|^#\?XKB_DEFAULT_LAYOUT=.*|XKB_DEFAULT_LAYOUT=$LAYOUT|" "$HOME/.config/labwc/environment"
+labwc --reconfigure

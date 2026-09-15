@@ -1,0 +1,40 @@
+#!/bin/bash
+echo ""
+read -p "   [0;33mQemu Installer[0m
+
+   Qemu/kvm is a virtual machine, similar to VirtualBox.
+   This will install Qemu with all --recommends enabled.
+
+   [0;34mhttps://qemu-project.gitlab.io/qemu/[0m
+   
+   
+   [0;32m-----------------------------------------------------
+   
+   Please press enter to install Qemu.
+   
+   -----------------------------------------------------[0m
+   
+   
+   Or, close this terminal window to quit the install." ;
+   if : >/dev/tcp/8.8.8.8/53; then
+echo "" 
+sudo apt update && sudo apt install --install-recommends qemu-system-x86 virt-manager &&
+echo ""
+echo "-----------------------------------------------------"
+echo ""
+echo "[0;32mAll Finished![0m"
+echo "" 
+echo "[0;32mFor quick use, open a terminal where you have an ISO and use:"
+echo "qemu-system-x86_64 -enable-kvm -cdrom Your-Cool-ISO-amd64.hybrid.iso -m 2048[0m"
+echo ""
+echo "-----------------------------------------------------"
+else
+echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+ echo ""
+ echo "   [0;33mNo Internet connection. Please connect and try again.[0m"
+ echo ""
+ echo "   [0;31m-----------------------------------------------------[0m"
+echo ""
+fi
+read -n1 -p " Press any key to quit this dialog ... "
