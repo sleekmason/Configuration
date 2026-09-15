@@ -1,0 +1,26 @@
+### labwc autostart
+### Place commands here to have programs started on login.
+
+### Current screenlock and suspend options. - CHOOSE ONLY ONE.
+##
+## Suspend only. (uncomment below)
+# swayidle -w timeout 600 'systemctl suspend' &
+
+## 5 minute lockscreen delay. (uncomment below)
+# swayidle -w timeout 300 'swaylock -f -e -c 072836 --ring-color 0C5E5B --line-uses-ring' &
+
+## 5 minute lockscreen + 10 minute suspend. (uncomment below)
+# swayidle -w timeout 300 'swaylock -f -e -c 072836 --ring-color 0C5E5B --line-uses-ring' timeout 600 'systemctl suspend' &
+
+### Common startup programs. Comment any item no longer wanted.
+/usr/local/bin/restore-wallpaper &
+waybar >/dev/null 2>&1 &
+/usr/libexec/polkit-mate-authentication-agent-1 &
+nm-applet &
+mako &
+
+### Start the Thunar Daemon. Uncomment all three lines below to enable.
+# if type 'thunar' &> /dev/null; then
+# thunar --daemon &
+# fi
+welcome-backend.sh &

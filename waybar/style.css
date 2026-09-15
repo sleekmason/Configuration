@@ -1,0 +1,501 @@
+/* ============================================
+   Custom Waybar Theme For Waydog 11 Nov 2025
+   ============================================ */
+
+/* -----------------------------------------------------------
+   Change the fourth value in any of the listed rgba colors to
+   change the opacity level. 
+   
+   The "base" color below is changed by the script to control 
+   the main bar color and should not be edited. To change the
+   main bar colors, look in /usr/local/bin/waybar-icon-toggle
+   lines 414 through 428 (currently). 
+   
+   ALL of the other colors can be changed at will, and will
+   remain the color as set.
+   ----------------------------------------------------------- */
+@define-color base        rgba(21,22,23, 0.8);
+
+/* -----------------------------------------------------------
+   Bar icon background colors applied with the colorschemes.
+   Change these to adjust the matching icon color highlights.
+   ----------------------------------------------------------- */
+ /* Black (Ink) #0E1112 */
+@define-color ink         rgba(37,43,48, 0.8);
+@define-color hiink       #2F3840;
+
+ /* Dark Brown (Dragon) #303538  */
+@define-color dkbrown     rgba(48,53,56, 0.8);
+@define-color hidkbrown   #454B4D;
+
+ /* Brown (Drow/Adwaita) #3b3b3b */
+@define-color brown       rgba(60,60,60, 0.8);
+@define-color hibrown     #474747;
+
+ /* Blue (Fane) #243840 */   
+@define-color base-light  rgba(36,56,64, 0.8);
+@define-color border2     #31434D;
+
+/* Purple (Nightshade/raz) #262F3D */
+@define-color raz         rgba(41,51,66, 0.8);
+@define-color hiraz       #303B4D;
+
+ /* Gray (Ozark) #434D59 */
+@define-color grey        rgba(58,66,77, 0.8);
+@define-color higrey      #434D59;
+
+/* -----------------------------------------------------------
+   Various other icon colors in use. Change as desired.
+   ----------------------------------------------------------- */
+@define-color tag-light   #22353D;
+@define-color tan         #ADB099;
+@define-color hitan       #D1D6B0;
+@define-color border      #2E3E46;
+@define-color text        #E0E0E0;
+@define-color text-dim    #A8A8A8;
+@define-color violet      #9E9BC2;
+@define-color hiviolet    #D0CCFF;
+@define-color green       #A3BE8C;
+@define-color medgreen    #72B862;
+@define-color brightgreen #80D99A;
+@define-color higreen     #ADFFC2;
+@define-color red         #FF7D7D;
+@define-color maroon      #A65151;
+@define-color indigo      #928ADE;
+@define-color hiindigo    #CDC7FF;
+@define-color orange      #D08770;
+@define-color yellow      #EBCB8B;
+@define-color hiyellow    #F5DAA4;
+@define-color purple      #B48EAD;
+@define-color blue        #97B6C7;
+@define-color brightblue  #7BAEC7;
+@define-color browserblue #50B1BF;
+@define-color hiblue      #9CD2F0;
+@define-color coolblue    #7EB6D6;
+@define-color white       #ffffff;
+@define-color light       #E0E0E0;
+@define-color hilight     #EBEBEB;
+@define-color teal        #256E75;
+@define-color darkteal    #2C4752;
+@define-color hiteal      #4DA1A8;
+@define-color peach       #D18679;
+@define-color hipeach     #E0A79D;
+
+/* --------------------------------------------
+   General Bar Styling
+   -------------------------------------------- */
+  
+#waybar {
+  background: @base;
+  color: @text;
+  font-family: "Dejavu Sans";
+  font-size: 13px;
+  min-height: 22px;
+  padding: 0 6px;
+  margin: 0px;
+}
+
+tooltip {
+  background: @dkbrown;
+  color: @text;
+  border: 1px solid @hidkbrown;
+  border-radius: 8px;
+  padding: 0px 8px;
+}
+
+/* --------------------------------------------
+   Workspaces
+   -------------------------------------------- */
+#workspaces button {
+  min-height: 0px;
+  font-family: "Dejavu Sans";
+  font-size: 11px;
+  color: @text-dim;
+  border-radius: 6px;
+  padding: 0px 2px;
+  margin-left: 0px;
+  margin-right: 2px;
+}
+
+#workspaces button.active {
+  background: @dkbrown;
+  color: @text;
+}
+
+#workspaces button:hover {
+  background: @hidkbrown;
+  color: @white;
+}
+
+#workspaces button.focused {
+  background: @dkbrown;
+  color: @white;
+}
+
+#workspaces button.focused:hover {
+  background: @hidkbrown;
+  color: @white;
+}
+
+/* --------------------------------------------
+   Modules
+   -------------------------------------------- */
+#clock {
+  color: @text;
+  background: @dkbrown;
+  padding: 0 8px;
+  border-radius: 8px;
+  margin-left: 4px;
+  margin-right: 6px;
+  font-size: 12px;
+}
+
+#clock:hover {
+    background: @hidkbrown;
+    color: @white;
+}
+
+#battery {
+  color: @green;
+  padding: 0 6px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+#battery.critical {
+  color: @red;
+  background: rgba(191, 97, 106, 0.15);
+  border-radius: 6px;
+}
+
+#network {
+  color: @blue;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+#cpu {
+  color: @yellow;
+  padding: 0 7px;
+  font-size: 12px;
+}
+
+#memory {
+  color: @orange;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+#power-profiles-daemon {
+  color: @tan;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+#temperature {
+  color: @purple;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+#pulseaudio {
+  color: @violet;
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+#pulseaudio:hover {
+  background: @hidkbrown;
+  color: @hiviolet;
+  border-radius: 8px;
+}
+
+#backlight {
+  color: @yellow;
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+#backlight:hover {
+  background: @hidkbrown;
+  color: @hiyellow;
+  border-radius: 8px;
+}
+
+/* --------------------------------------------
+   Tray
+   -------------------------------------------- */
+#tray {
+  padding: 0 6px;
+}
+
+/* ---------------------------------------------
+   Sway Language Module
+   --------------------------------------------- */
+#language {
+    color: #97B6C7;       /* blue */
+    padding: 0 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#language:hover {
+    background: #31454F;  /* border2 */
+    color: @white;
+}
+
+/* ---------------------------------------------
+   ⚡ Idle Inhibitor Styling
+   --------------------------------------------- */
+
+/* Base idle inhibitor block */
+#idle_inhibitor {
+    color: @text;
+    padding: 0px 9px;
+    border-radius: 8px;
+    margin: 0 0px;
+    font-size: 13px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Disabled state */
+#idle_inhibitor.deactivated {
+    color: @maroon;
+}
+
+/* Active inhibitor */
+#idle_inhibitor.activated {
+    color: @green;
+}
+
+/* Hover */
+#idle_inhibitor:hover {
+    background: @hidkbrown;
+    color: @green;
+}
+
+/* --------------------------------------------
+   Tag adjustments for mango if installed
+   -------------------------------------------- */
+#tags {
+    padding: 0;
+    margin: 0;
+}
+
+#tags button {
+    color: @text-dim;
+    padding: 0 3px;
+    min-height: 0;
+    font-size: 11px;
+}
+
+#tags button:hover {
+    background: @hidkbrown;
+    color: @white;
+    padding: 0 3px;
+}
+
+#tags button.occupied {
+    background: @dkbrown;
+    color: @text-dim;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 0 2px;
+}
+
+#tags button.occupied:hover {
+    background: @hidkbrown;
+    color: @white;
+    padding: 0 2px;
+}
+
+#tags button.focused {
+    background: @hidkbrown;
+    color: @white;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 0 2px;
+}
+
+#tags button.focused:hover {
+    background: @hidkbrown;
+    color: @white;
+    padding: 0 2px;
+}
+
+#tags button.urgent {
+    background: @maroon;
+    color: @white;
+    padding: 0 3px;
+}
+
+/* --------------------------------------------
+   Launcher 1
+   -------------------------------------------- */
+#custom-launcher1 {
+  background: @dkbrown;
+  color: @indigo;
+  padding: 0px 8px 1px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-right: 2px;
+}
+#custom-launcher1:hover {
+  background: @hidkbrown;
+  color: @hiindigo;
+}
+
+/* --------------------------------------------
+   Launcher 2
+   -------------------------------------------- */
+#custom-launcher2 {
+  background: @dkbrown;
+  color: @peach;
+  padding: 0px 8px 0px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  margin-right: 2px;
+}
+#custom-launcher2:hover {
+  background: @hidkbrown;
+  color: @hipeach;
+}
+
+/* --------------------------------------------
+   Launcher 3
+   -------------------------------------------- */
+#custom-launcher3 {
+  background: @dkbrown;
+  color: @brightgreen;
+  padding: 0px 8px 1px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  margin-right: 2px;
+}
+#custom-launcher3:hover {
+  background: @hidkbrown;
+  color: @higreen;
+}
+
+/* --------------------------------------------
+   Launcher 4
+   -------------------------------------------- */
+#custom-launcher4 {
+  background: @dkbrown;
+  color: @browserblue;
+  padding: 0px 8px 0px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-right: 14px;
+}
+#custom-launcher4:hover {
+  background: @hidkbrown;
+  color: @hiblue;
+}
+
+/* --------------------------------------------
+   Launcher 5
+   -------------------------------------------- */
+#custom-launcher5 {
+  background: @dkbrown;
+  color: @tan;
+  padding: 1px 8px 0px 8px;
+  border-radius: 8px;
+  font-size: 9px;
+  margin-right: 6px;
+}
+#custom-launcher5:hover {
+  background: @hidkbrown;
+  color: @hitan;
+}
+
+/* --------------------------------------------
+   Scratchpad
+   -------------------------------------------- */
+#scratchpad {
+    background: #203138; /* base-light */
+    color: #9CA8B4;      /* text */
+    padding: 0 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    margin-right: 6px;
+}
+
+#scratchpad:hover {
+    background: #31454F; /* border2 */
+    color: #ffffff;
+}
+
+/* --------------------------------------------
+   MPD
+   -------------------------------------------- */
+#mpd {
+  background: @dkbrown;
+  color: @purple;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  margin-right: 6px;
+}
+#mpd:hover {
+  background: @hidkbrown;
+}
+
+/* --------------------------------------------
+   Power Button
+   -------------------------------------------- */
+#custom-power {
+  background: @dkbrown;
+  color: @coolblue;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 2px;
+}
+#custom-power:hover {
+  background: @hidkbrown;
+  color: @text;
+}
+
+/* --------------------------------------------
+   WLR Taskbar
+   -------------------------------------------- */
+
+#taskbar {
+  background: transparent;
+  padding: 0;
+  margin-left: 2px;
+  border: none;
+}
+
+#taskbar button {
+  font-family: "Dejavu";
+  font-size: 13px;
+  color: @text;
+  min-height: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  margin: 0 8px;
+  border: none;
+}
+
+#taskbar button:hover image {
+  -gtk-icon-transform: scale(1.15);
+}
+
+#taskbar button:active image {
+  -gtk-icon-transform: scale(0.92);
+}
+
+#custom-separator1 {
+    font-size: 0px;
+    margin: 0;
+    padding: 0;
+}
+/* ICON_SCALE:0 */
