@@ -59,7 +59,7 @@ yad --title "Auto Themes" --escape-ok --borders=6 --buttons-layout=spread \
     --field="Custom Drow":FBTN "$HOME/.config/lilidog-themes/Custom-drow" \
     --field="Custom Fane":FBTN "$HOME/.config/lilidog-themes/Custom-fane" \
     --field="Custom Forge":FBTN "$HOME/.config/lilidog-themes/Custom-forge" \
-    --field="Custom ghost":FBTN "$HOME/.config/lilidog-themes/Custom-ghost" \
+    --field="Custom Ghost":FBTN "$HOME/.config/lilidog-themes/Custom-ghost" \
     --field="Custom Ink":FBTN "$HOME/.config/lilidog-themes/Custom-ink" \
     --field="Custom NS":FBTN "$HOME/.config/lilidog-themes/Custom-nightshade" \
     --field="Custom Ozark":FBTN "$HOME/.config/lilidog-themes/Custom-ozark"
